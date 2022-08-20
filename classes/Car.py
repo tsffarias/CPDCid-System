@@ -2,7 +2,7 @@ from classes.Vehicle import Vehicle
 
 class Car(Vehicle):
 
-    def __init__(self, placa, renavam, marca, modelo, ano_frabricacao, cor, categoria, estado, cidade):
+    def __init__(self, placa=None, renavam=None, marca=None, modelo=None, ano_frabricacao=None, cor=None, categoria=None, estado=None, cidade=None):
         super().__init__(placa, renavam, marca, modelo,
                          ano_frabricacao, cor, categoria, estado, cidade)
         self._tipo_veiculo = 'Carro'

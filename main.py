@@ -3,7 +3,7 @@ from services.Read_write_file import Read_write_file
 
 '''
 Grupo: Thiago, Eduardo, Quirino, Biel
-Título: Projeto Módulo 2 - API Marvel
+Título: CPDCID: PYTHON - Estrutura de Dados 2022
 '''
 
 def espaco():
@@ -22,7 +22,7 @@ def carregar_dados():
     
 
 if __name__ == '__main__':
-
+    
     carregar_dados()
 
     while (True):

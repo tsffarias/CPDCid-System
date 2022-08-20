@@ -1,7 +1,7 @@
 class Vehicle:
 
     # Construtor
-    def __init__(self, placa, renavam, marca, modelo, ano_frabricacao, cor, categoria, estado, cidade):
+    def __init__(self, placa=None, renavam=None, marca=None, modelo=None, ano_frabricacao=None, cor=None, categoria=None, estado=None, cidade=None):
         self._placa = placa
         self._renavam = renavam
         self._marca = marca
