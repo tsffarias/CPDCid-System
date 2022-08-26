@@ -17,4 +17,4 @@ class Read_write_file:
                 carro.estado = content_list[7]
                 carro.cidade = content_list[8]
 
-                print(carro.__str__())
+                #print(carro.__str__())
