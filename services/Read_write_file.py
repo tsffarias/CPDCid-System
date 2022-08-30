@@ -8,11 +8,12 @@
 """ Details about the module and for what purpose it was built for"""
 
 from classes.Car import Car
+from pathlib import Path
 
 class Read_write_file:
 
     def read_file(lista_duplamente_encadeada):
-        with open('./files/veiculos.ernv', encoding='utf8') as f:
+        with open(Path("files", "veiculos.ernv"), encoding='utf8') as f:
             for line in f:
                 content_list = line.strip().split(";") # separa o conteudo pelo delimitador ; e coloca em uma lista
                 carro = Car() # criando objeto carro
