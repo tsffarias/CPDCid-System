@@ -1,12 +1,21 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+#----------------------------------------------------------------------------
+# Created By  : name_of_the_creator
+# Created Date: date/month/time ..etc
+# version ='1.0'
+# ---------------------------------------------------------------------------
+"""
+Grupo: Thiago, Eduardo, Quirino, Biel
+Título: CPDCID: PYTHON - Estrutura de Dados 2022
+"""
+
+# ---------------------------------------------------------------------------
 from classes.Car import Car
 from classes.ListaDuplamenteEncadeada import ListaDuplamenteEncadeada
 from services.Read_write_file import Read_write_file
 from services.Time_execution import Time_execution
 
-'''
-Grupo: Thiago, Eduardo, Quirino, Biel
-Título: CPDCID: PYTHON - Estrutura de Dados 2022
-'''
 
 def space():
     print("")
@@ -46,7 +55,10 @@ if __name__ == '__main__':
             print('Programa finalizado!')
             break
         elif resposta_usuario == 1:
-            print(resposta_usuario)
+            busca_carro = input("Entre com o dado do veículo para busca: ")
+            busca_carro = ListaDuplamenteEncadeada.busca(lista_duplamente_encadeada, busca_carro)
+            print(busca_carro.conteudo)
+
         elif resposta_usuario == 2:
             print(resposta_usuario)
         elif resposta_usuario == 3:

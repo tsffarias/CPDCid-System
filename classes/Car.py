@@ -8,4 +8,4 @@ class Car(Vehicle):
         self._tipo_veiculo = 'Carro'
 
     def __str__(self):
-        return f'{self._tipo_veiculo}: Placa({self._placa}) - Renava({self.renavam}) - Marca({self._marca}) - Modelo({self._modelo}) - Ano Fabricação({self._ano_frabricacao}) - Cor({self._cor}) - Categoria({self._categoria}) - Estado({self._estado}) - Cidade({self._cidade})'
+        return f'{self._tipo_veiculo}: Placa({self._placa}) - Renavam({self.renavam}) - Marca({self._marca}) - Modelo({self._modelo}) - Ano Fabricação({self._ano_frabricacao}) - Cor({self._cor}) - Categoria({self._categoria}) - Estado({self._estado}) - Cidade({self._cidade})'

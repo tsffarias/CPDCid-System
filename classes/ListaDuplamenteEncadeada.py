@@ -1,3 +1,6 @@
+from signal import pause
+
+
 class Celula:
 
     def __init__(self, conteudo):
@@ -143,3 +146,9 @@ class ListaDuplamenteEncadeada:
     def item(self, posicao):
         celula = self._celula(posicao)        
         return celula.conteudo
+    
+    def busca(self, valor):
+        celula = self.inicio
+        while celula and (valor not in str(celula.conteudo)):
+            celula = celula.proximo
+        return celula
