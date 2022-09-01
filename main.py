@@ -29,7 +29,6 @@ def load_data():
     return lista_duplamente_encadeada
 
 if __name__ == '__main__':
-
     lista_duplamente_encadeada = load_data() # carregando dados dos carros
 
     while (True):

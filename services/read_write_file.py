@@ -7,6 +7,7 @@ class Read_write_file:
                 content_list = line.strip().split(";") # separa o conteudo pelo delimitador ; e coloca em uma lista
                 carro = Car() # criando objeto carro
                 carro.placa = content_list[0] # inserindo dados do carro no objeto
+                carro.padrao_placa = carro.validation_pattern_plate(carro.placa)
                 carro.renavam = content_list[1]
                 carro.marca = content_list[2]
                 carro.modelo = content_list[3]
