@@ -1,5 +1,6 @@
 from classes.Vehicle import Vehicle
 import re
+
 class Car(Vehicle):
 
     def __init__(self, placa=None, padrao_placa=None, renavam=None, marca=None, modelo=None, ano_frabricacao=None, cor=None, categoria=None, estado=None, cidade=None):
