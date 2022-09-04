@@ -1,86 +1,69 @@
 '''
-Hashmap - Tabela de Disperção (Encadeamento Externo)
+Hashmap - Tabela de Disperção(Encadeamento Externo)
 Hashfunction: Soma(ascii de cada caracter da placa) MOD tamanho da tabela de disperção
+Referencia 1: https://youtu.be/ea8BRGxGmlA
+Referencia 2: https://youtu.be/54iv1si4YCM
 '''
 
 class TabelaDispercao:
- 
     def __init__(self):
-        self.size = 6
-        self.map = [None] * self.size
+        self.MAX = 64
+        self.arr = [[] for i in range(self.MAX)]
 
-    # hash function
-    def _get_hash(self, key):
+    def get_hash(self, key):
         hash = 0
-        for char in str(key):
+        for char in key:
             hash += ord(char)
-        return hash % self.size
+        return hash % self.MAX
 
-    # adicionando elemento ao hashmap
-    def __setitem__(self, key, value):
-        key_hash = self._get_hash(key)
-        key_value = [key, value]
-
-        if self.map[key_hash] is None:
-            self.map[key_hash] = list([key_value])
-            return True
-        else:
-            for pair in self.map[key_hash]:
-                if pair[0] == key:
-                    pair[1] = value
-                    return True
-                self.map[key_hash].append(key_value)
-                return True
-
-    # pesquisando elemento no hashmap
     def __getitem__(self, key):
-        key_hash = self._get_hash(key)
-        if self.map[key_hash] is not None:
-            for pair in self.map[key_hash]:
-                if pair[0] == key:
-                    return pair[1]
-        return None
+        arr_index = self.get_hash(key)
+        for kv in self.arr[arr_index]:
+            if kv[0] == key:
+                return kv[1]
 
-    # removendo elemento no hashmap
+    def __setitem__(self, key, val):
+        h = self.get_hash(key)
+        found = False
+        for index, element in enumerate(self.arr[h]):
+            if len(element) == 2 and element[0] == key: # quando a mesma chave é encontrada, a chave e o valor da tupla são editados
+                self.arr[h][index] = (key, val)
+                found = True
+        if not found: # quando a chama não é encontrada, a tupla com a chave e valor são adicionados no hashmap
+            self.arr[h].append((key, val))
+
     def __delitem__(self, key):
-        key_hash = self._get_hash(key)
+        arr_index = self.get_hash(key)
+        for index, kv in enumerate(self.arr[arr_index]):
+            if kv[0] == key:
+                print("del", index)
+                del self.arr[arr_index][index]
 
-        if self.map[key_hash] is None:
-            return False
-        
-        for i in range(0, len(self.map[key_hash])):
-            if self.map[key_hash][i][0] == key:
-                self.map[key_hash].pop(i)
-                return True
-        return False
+    def imprimir_estrutura_de_dados(self):
+        for element in self.arr:
+            if len(element):
+                for i in element:
+                    print(i[1].__str__())
 
-    def keys(self):
-        arr = []
-        for i in range(0, len(self.map)):
-            if self.map[i]:
-                arr.append(self.map[i][0])
-        return arr
+'''
+t = TabelaDispercao()
+t["march 6"] = 310
+t["march 7"] = 420
+t["march 8"] = 67
+t["march 17"] = 63457
 
-    def print(self):
-        print('---PHONEBOOK----')
-        for item in self.map:
-            if item is not None:
-                print(str(item))
+print(t["march 6"])
+print(t["march 17"])
+print(t.arr)
+t["march 6"] = 11 # editando
+print(t.arr)
+print(t["march 6"])
+del t["march 6"]
+print(t.arr)
 
+#print(estrutura_de_dados.imprimir_estrutura_de_dados())
+#print(estrutura_de_dados.__delitem__('IDE6N11'))
+#print(estrutura_de_dados.arr)
 
-h = TabelaDispercao()
-h.__setitem__('Bob', '567-8888')
-h.__setitem__('Ming', '293-6753')
-h.__setitem__('Ming', '333-8233')
-h.__setitem__('Ankit', '293-8625')
-h.__setitem__('Aditya', '852-6551')
-h.__setitem__('Alicia', '632-4123')
-h.__setitem__('Mike', '567-2188')
-h.__setitem__('Aditya', '777-8888')
-h.print()
-h.__delitem__('Bob')
-h.print()
-print('Ming: ' + h.__getitem__('Ming'))
-print(h.keys())
-
-
+# cz commit
+'''

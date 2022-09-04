@@ -1,8 +1,8 @@
 from classes.Car import Car
 class Read_write_file:
 
-    def read_file(lista_duplamente_encadeada):
-        with open('.\\files\\veiculos.ernv', encoding='utf8') as f:
+    def read_file(estrutura_de_dados, tipo_estrutura):
+        with open('.\\files\\veiculos_test.ernv', encoding='utf8') as f:
             for line in f:
                 content_list = line.strip().split(";") # separa o conteudo pelo delimitador ; e coloca em uma lista
                 carro = Car() # criando objeto carro
@@ -17,6 +17,9 @@ class Read_write_file:
                 carro.estado = content_list[7]
                 carro.cidade = content_list[8]
 
-                lista_duplamente_encadeada.inserir_no_inicio(carro)
+                if tipo_estrutura == 'tabela_dispercao':
+                    estrutura_de_dados.__setitem__(carro.placa, carro)
+                elif tipo_estrutura == 'lista_duplamente_encadeada':
+                    estrutura_de_dados.inserir_no_inicio(carro)
 
-        return lista_duplamente_encadeada
+        return estrutura_de_dados
