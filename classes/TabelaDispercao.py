@@ -36,8 +36,12 @@ class TabelaDispercao:
         arr_index = self.get_hash(key)
         for index, kv in enumerate(self.arr[arr_index]):
             if kv[0] == key:
-                print("del", index)
+                carro = self.arr[arr_index][index]
                 del self.arr[arr_index][index]
+                return carro
+
+    def edit_item(self):
+        pass
 
     def imprimir_estrutura_de_dados(self):
         for element in self.arr:
@@ -67,3 +71,4 @@ print(t.arr)
 
 # cz commit
 '''
+

@@ -26,7 +26,7 @@ class Vehicle:
     def padrao_placa(self):
         return self._padrao_placa
 
-    @placa.setter
+    @padrao_placa.setter
     def padrao_placa(self, padrao_placa):
         self._padrao_placa = padrao_placa
 
