@@ -38,6 +38,12 @@ class Car(Vehicle):
                 else:
                     return -1
 
+    def validation_ano_fabricacao(self, ano_frabricacao):
+        if len(str(ano_frabricacao)) == 4 and str(ano_frabricacao).isnumeric():
+            return True
+        else:
+            return False
+
     def validation_renavam(self, renavam):
         if len(str(renavam)) == 11 and str(renavam).isnumeric():
             return True

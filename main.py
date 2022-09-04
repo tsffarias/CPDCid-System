@@ -27,7 +27,7 @@ def menu():
     print("Opção 1 - Pesquisar Carro")
     print("Opção 2 - Remover Carro")
     print("Opção 3 - Editar Carro")
-    print("Opção 4 - Imprimir Toda Lista")
+    print("Opção 4 - Relatório de Veículos")
     print("Opção 5 - Sair do programa")
     print("_______________________")
     space()
@@ -52,13 +52,44 @@ def carro_coleta_dados(placa):
     carro = Car()
     carro.placa = placa
     carro.padrao_placa = carro.validation_pattern_plate(carro.placa)
-    carro.renavam = input('Digite o renavam: ')
-    carro.marca = input('Digite a marca: ')
-    carro.modelo = input('Digite a modelo: ')
-    carro.ano_frabricacao = input('Digite o ano de fabricação: ')
+    
+    renavam = input('Digite o renavam: ')
+    if (carro.validation_renavam(renavam)):
+        carro.renavam = renavam
+    else:
+        raise Exception(f'Renavam inválido (padrão de 11 números não respeitados): {renavam}')
+
+    marca = input('Digite a marca: ')
+    if (carro.validation_marca(marca)):
+        carro.marca = marca
+    else:
+        raise Exception(f'Marca inválida (maximo de 15 caracteres não respeitados): {marca}')
+
+    modelo = input('Digite a modelo: ')
+    if (carro.validation_modelo(modelo)):
+        carro.modelo = modelo
+    else:
+        raise Exception(
+            f'Modelo inválido (maximo de 45 caracteres não respeitados): {modelo}')
+
+    ano_frabricacao = input('Digite o ano de fabricação: ')
+    if (carro.validation_ano_fabricacao(ano_frabricacao)):
+        carro.ano_frabricacao = ano_frabricacao
+    else:
+        raise Exception(f'Ano de fabricação inválido: {ano_frabricacao}')
+
     carro.cor = input('Digite a cor: ')
-    carro.categoria = input('Digite a categoria: ')
-    carro.estado = input('Digite o estado: ')
+    categoria = input('Digite a categoria: ')
+    if (carro.validation_categoria(categoria)):
+        carro.categoria = categoria
+    else:
+        raise Exception(f'Categoria inválida: {ano_frabricacao}')
+
+    estado = input('Digite o estado: ')
+    if (carro.validation_uf(estado)):
+        carro.estado = estado
+    else:
+        raise Exception(f'Estado inválido: {estado}')
     carro.cidade = input('Digite a cidade: ')
     
     carro_info(carro)
@@ -107,7 +138,12 @@ if __name__ == '__main__':
             break
         elif resposta_usuario == 1:  # Pesquisar carro
             placa = input('Digite a placa do carro: ')
-            carro = estrutura_de_dados.__getitem__(placa)
+            
+            # tipo de operação de acordo com o tipo estrutura
+            if tipo_estrutura == 'lista_duplamente_encadeada':
+                print('Em Desenvolvimento')
+            elif tipo_estrutura == 'tabela_dispercao':
+                carro = estrutura_de_dados.__getitem__(placa)
 
             if carro is None:
                 print('Placa não existe.')
@@ -115,7 +151,12 @@ if __name__ == '__main__':
                 carro_info(carro)
         elif resposta_usuario == 2:  # remover carro
             placa = input('Digite a placa do carro a ser removido: ')
-            carro = estrutura_de_dados.__delitem__(placa)
+            
+            # tipo de operação de acordo com o tipo estrutura
+            if tipo_estrutura == 'lista_duplamente_encadeada':
+                print('Em Desenvolvimento')
+            elif tipo_estrutura == 'tabela_dispercao':
+                carro = estrutura_de_dados.__delitem__(placa)
 
             if carro is None:
                 print('Placa não existe.')
@@ -123,14 +164,48 @@ if __name__ == '__main__':
                 print(f'Carro com placa {placa} removido com sucesso.')
         elif resposta_usuario == 3:  # editar carro
             placa = input('Digite a placa do carro: ')
-            carro = estrutura_de_dados.__getitem__(placa)
+
+            # tipo de operação de acordo com o tipo estrutura
+            if tipo_estrutura == 'lista_duplamente_encadeada':
+                print('Em Desenvolvimento')
+            elif tipo_estrutura == 'tabela_dispercao':
+                carro = estrutura_de_dados.__getitem__(placa)
 
             if carro is None:
                 print('Placa não existe.')
             else:
                 dados = carro_coleta_dados(placa)
-        elif resposta_usuario == 4:  # imprimir todos os carros
-            estrutura_de_dados.imprimir_estrutura_de_dados()  # imprimindo carros
+        elif resposta_usuario == 4:  # Relatorio de veiculos
+            # tipo de operação de acordo com o tipo estrutura
+
+            print("Opção 1 - Relatório de Intervalo de Anos")
+            print("Opção 2 - Relatório Estadual por Final de Placa")
+
+            resposta_usuario = int(input('❐ Informe a sua opção (1 ou 2): '))
+
+            # Relatório de Intervalo de Anos
+            if (resposta_usuario == 1):  
+                ano_inicial = input('Digite o ano inicial: ')
+                ano_final = input('Digite o ano final: ')
+                
+                # fazer uma pesquisar de todos os carros entre estes anos
+            
+                if (Car().validation_ano_fabricacao(ano_inicial) and Car().validation_ano_fabricacao(ano_final) and (ano_inicial <= ano_final)):
+                    print(ano_inicial, ano_final)
+                else:
+                    print('Intervalo de Anos inválido.')
+                
+            
+            
+            elif (resposta_usuario == 2): # Relatório Estadual por Final de Placa
+                pass
+            else:
+                print('Opção inválida.')
+            '''
+            if tipo_estrutura == 'lista_duplamente_encadeada':
+                print('Em Desenvolvimento')
+            elif tipo_estrutura == 'tabela_dispercao':            
+                estrutura_de_dados.imprimir_estrutura_de_dados() '''
         else:
             print('Tente novamente.')
 
