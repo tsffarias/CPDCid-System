@@ -49,6 +49,31 @@ class TabelaDispercao:
                 for i in element:
                     print(i[1].__str__())
 
+    def carro_info(self, carro):
+        print("_______________________")
+        print(f'Placa: {carro.placa}')
+        print(f'Padrão Placa: {carro.padrao_placa}')
+        print(f'Renavam: {carro.renavam}')
+        print(f'Marca: {carro.marca}')
+        print(f'Modelo: {carro.modelo}')
+        print(f'Ano Fabricação: {carro.ano_frabricacao}')
+        print(f'Cor: {carro.cor}')
+        print(f'Categoria: {carro.categoria}')
+        print(f'Estado: {carro.estado}')
+        print(f'Cidade: {carro.cidade}')
+        print("_______________________")
+        print("")
+
+    def relatorio_intervalo_tempo(self, ano_inicial, ano_final):
+        num_cars = 0
+        for element in self.arr:
+            if len(element):
+                for carro in element:
+                    if carro[1].ano_frabricacao >= ano_inicial and carro[1].ano_frabricacao <= ano_final:
+                        self.carro_info(carro[1])
+                        num_cars += 1
+        print(f'Número total de carros entre os anos {ano_inicial} e {ano_final}: {num_cars}\n')
+
 '''
 t = TabelaDispercao()
 t["march 6"] = 310

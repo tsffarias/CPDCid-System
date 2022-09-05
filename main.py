@@ -142,6 +142,7 @@ if __name__ == '__main__':
             # tipo de operação de acordo com o tipo estrutura
             if tipo_estrutura == 'lista_duplamente_encadeada':
                 print('Em Desenvolvimento')
+                carro = None
             elif tipo_estrutura == 'tabela_dispercao':
                 carro = estrutura_de_dados.__getitem__(placa)
 
@@ -155,6 +156,7 @@ if __name__ == '__main__':
             # tipo de operação de acordo com o tipo estrutura
             if tipo_estrutura == 'lista_duplamente_encadeada':
                 print('Em Desenvolvimento')
+                carro = None
             elif tipo_estrutura == 'tabela_dispercao':
                 carro = estrutura_de_dados.__delitem__(placa)
 
@@ -168,6 +170,7 @@ if __name__ == '__main__':
             # tipo de operação de acordo com o tipo estrutura
             if tipo_estrutura == 'lista_duplamente_encadeada':
                 print('Em Desenvolvimento')
+                carro = None
             elif tipo_estrutura == 'tabela_dispercao':
                 carro = estrutura_de_dados.__getitem__(placa)
 
@@ -191,21 +194,23 @@ if __name__ == '__main__':
                 # fazer uma pesquisar de todos os carros entre estes anos
             
                 if (Car().validation_ano_fabricacao(ano_inicial) and Car().validation_ano_fabricacao(ano_final) and (ano_inicial <= ano_final)):
-                    print(ano_inicial, ano_final)
+                    estrutura_de_dados.relatorio_intervalo_tempo(
+                        ano_inicial, ano_final)
                 else:
                     print('Intervalo de Anos inválido.')
                 
             
             
             elif (resposta_usuario == 2): # Relatório Estadual por Final de Placa
-                pass
+                
+                if tipo_estrutura == 'lista_duplamente_encadeada':
+                    print('Em Desenvolvimento')
+                    estrutura_de_dados.imprimir_estrutura_de_dados()
+                elif tipo_estrutura == 'tabela_dispercao':            
+                    estrutura_de_dados.imprimir_estrutura_de_dados() 
             else:
                 print('Opção inválida.')
-            '''
-            if tipo_estrutura == 'lista_duplamente_encadeada':
-                print('Em Desenvolvimento')
-            elif tipo_estrutura == 'tabela_dispercao':            
-                estrutura_de_dados.imprimir_estrutura_de_dados() '''
+            
         else:
             print('Tente novamente.')
 
