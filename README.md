@@ -1,6 +1,6 @@
-<img src="https://img.icons8.com/cute-clipart/64/000000/car-racing.png" alt="CPCID-System ícone by Icons8" width="100px" align="right"/>
+<img src="https://img.icons8.com/cute-clipart/64/000000/car-racing.png" alt="CPDCid-System ícone by Icons8" width="100px" align="right"/>
 
-# CPCID-System
+# CPDCid-System
 
 Trabalho de Estrutura de Dados e Programação I, da turma T01-2022-2.
 Desenvolvido pelos discentes:
@@ -11,7 +11,7 @@ Desenvolvido pelos discentes:
  - Thiago Silva Farias [@tsffarias](https://github.com/tsffarias)
 
 
-## Descrição suscinta
+## Descrição sucinta
 
  Implementar alguns protótipos para a manipulação de dados de veículos utilizando várias estruturas de dados diferentes, de tal forma que possam avaliar e indicar qual a melhor estrutura de dados se aplica ao projeto
 
@@ -20,3 +20,14 @@ Desenvolvido pelos discentes:
 
   - Listas encadeadas
   - Tabelas de dispersão com encadeamento externo
+
+
+# Docs
+## Principais Visões do Sistema
+
+
+## Indices
+
+- [Variáveis importantes](docs/vars.md)
+- [Funções](docs/functions.md)
+
