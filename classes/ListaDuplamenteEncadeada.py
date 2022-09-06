@@ -25,7 +25,7 @@ class ListaDuplamenteEncadeada:
     def quantidade(self):
         return self._quantidade
 
-    def imprimir(self):
+    def imprimir_estrutura_de_dados(self):
         atual = self.inicio
         for i in range(0, self.quantidade):
             print(atual.conteudo)
@@ -149,3 +149,18 @@ class ListaDuplamenteEncadeada:
         while celula and (valor not in str(celula.conteudo)):
             celula = celula.proximo
         return celula
+    
+    def carro_info(self, carro):
+        print("_______________________")
+        print(f'Placa: {carro.placa}')
+        print(f'Padrão Placa: {carro.padrao_placa}')
+        print(f'Renavam: {carro.renavam}')
+        print(f'Marca: {carro.marca}')
+        print(f'Modelo: {carro.modelo}')
+        print(f'Ano Fabricação: {carro.ano_frabricacao}')
+        print(f'Cor: {carro.cor}')
+        print(f'Categoria: {carro.categoria}')
+        print(f'Estado: {carro.estado}')
+        print(f'Cidade: {carro.cidade}')
+        print("_______________________")
+        print("")

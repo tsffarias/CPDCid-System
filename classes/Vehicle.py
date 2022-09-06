@@ -1,8 +1,9 @@
 class Vehicle:
 
     # Construtor
-    def __init__(self, placa=None, renavam=None, marca=None, modelo=None, ano_frabricacao=None, cor=None, categoria=None, estado=None, cidade=None):
+    def __init__(self, placa=None, padrao_placa=None, renavam=None, marca=None, modelo=None, ano_frabricacao=None, cor=None, categoria=None, estado=None, cidade=None):
         self._placa = placa
+        self._padrao_placa = padrao_placa
         self._renavam = renavam
         self._marca = marca
         self._modelo = modelo
@@ -20,6 +21,14 @@ class Vehicle:
     @placa.setter
     def placa(self, placa):
         self._placa = placa
+
+    @property
+    def padrao_placa(self):
+        return self._padrao_placa
+
+    @padrao_placa.setter
+    def padrao_placa(self, padrao_placa):
+        self._padrao_placa = padrao_placa
 
     @property
     def renavam(self):
