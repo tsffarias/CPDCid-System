@@ -32,22 +32,6 @@ def menu():
     print("_______________________")
     space()
 
-
-def carro_info(carro):
-    print("_______________________")
-    print(f'Placa: {carro.placa}')
-    print(f'Padrão Placa: {carro.padrao_placa}')
-    print(f'Renavam: {carro.renavam}')
-    print(f'Marca: {carro.marca}')
-    print(f'Modelo: {carro.modelo}')
-    print(f'Ano Fabricação: {carro.ano_frabricacao}')
-    print(f'Cor: {carro.cor}')
-    print(f'Categoria: {carro.categoria}')
-    print(f'Estado: {carro.estado}')
-    print(f'Cidade: {carro.cidade}')
-    print("_______________________")
-    space()
-
 def carro_coleta_dados(placa):
     carro = Car()
     carro.placa = placa
@@ -92,7 +76,7 @@ def carro_coleta_dados(placa):
         raise Exception(f'Estado inválido: {estado}')
     carro.cidade = input('Digite a cidade: ')
     
-    carro_info(carro)
+    #estrutura_de_dados.carro_info(carro)
 
 def load_data(estrutura_de_dados, tipo_estrutura):
     start_time = Time_execution.start_time()  # capturando tempo inicial
@@ -149,7 +133,7 @@ if __name__ == '__main__':
             if carro is None:
                 print('Placa não existe.')
             else:
-                carro_info(carro)
+                estrutura_de_dados.carro_info(carro)
         elif resposta_usuario == 2:  # remover carro
             placa = input('Digite a placa do carro a ser removido: ')
             
@@ -191,13 +175,15 @@ if __name__ == '__main__':
                 ano_inicial = input('Digite o ano inicial: ')
                 ano_final = input('Digite o ano final: ')
                 
-                # fazer uma pesquisar de todos os carros entre estes anos
-            
-                if (Car().validation_ano_fabricacao(ano_inicial) and Car().validation_ano_fabricacao(ano_final) and (ano_inicial <= ano_final)):
-                    estrutura_de_dados.relatorio_intervalo_tempo(
-                        ano_inicial, ano_final)
-                else:
-                    print('Intervalo de Anos inválido.')
+                if tipo_estrutura == 'lista_duplamente_encadeada':
+                    print('Em Desenvolvimento')
+                    #estrutura_de_dados.imprimir_estrutura_de_dados()
+                elif tipo_estrutura == 'tabela_dispercao':
+                    if (Car().validation_ano_fabricacao(ano_inicial) and Car().validation_ano_fabricacao(ano_final) and (ano_inicial <= ano_final)):
+                        estrutura_de_dados.relatorio_intervalo_tempo(
+                            ano_inicial, ano_final)
+                    else:
+                        print('Intervalo de Anos inválido.')
                 
             
             
@@ -206,7 +192,10 @@ if __name__ == '__main__':
                 if tipo_estrutura == 'lista_duplamente_encadeada':
                     print('Em Desenvolvimento')
                     estrutura_de_dados.imprimir_estrutura_de_dados()
-                elif tipo_estrutura == 'tabela_dispercao':            
+                elif tipo_estrutura == 'tabela_dispercao':
+                    # Relatorio estadual por final de placa: o programa deve listar todos os 
+                    # veıculos de um dado estado, agrupados pelo digito final da placa.
+                    # https://stackabuse.com/python-check-if-string-contains-substring/ **************
                     estrutura_de_dados.imprimir_estrutura_de_dados() 
             else:
                 print('Opção inválida.')

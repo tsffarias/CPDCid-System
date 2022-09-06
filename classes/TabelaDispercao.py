@@ -7,7 +7,7 @@ Referencia 2: https://youtu.be/54iv1si4YCM
 
 class TabelaDispercao:
     def __init__(self):
-        self.MAX = 64
+        self.MAX = 400
         self.arr = [[] for i in range(self.MAX)]
 
     def get_hash(self, key):
@@ -29,7 +29,7 @@ class TabelaDispercao:
             if len(element) == 2 and element[0] == key: # quando a mesma chave é encontrada, a chave e o valor da tupla são editados
                 self.arr[h][index] = (key, val)
                 found = True
-        if not found: # quando a chama não é encontrada, a tupla com a chave e valor são adicionados no hashmap
+        if not found: # quando a chave não é encontrada, a tupla com a chave e valor são adicionados no hashmap
             self.arr[h].append((key, val))
 
     def __delitem__(self, key):
@@ -73,6 +73,10 @@ class TabelaDispercao:
                         self.carro_info(carro[1])
                         num_cars += 1
         print(f'Número total de carros entre os anos {ano_inicial} e {ano_final}: {num_cars}\n')
+
+    # validar o UF e usar o search # https://stackabuse.com/python-check-if-string-contains-substring/
+    def relatorio_estadual_final_placa(self, uf, placa):
+        pass
 
 '''
 t = TabelaDispercao()
