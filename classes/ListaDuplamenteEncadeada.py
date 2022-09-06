@@ -143,7 +143,13 @@ class ListaDuplamenteEncadeada:
     def item(self, posicao):
         celula = self._celula(posicao)        
         return celula.conteudo
-
+    
+    def busca(self, valor):
+        celula = self.inicio
+        while celula and (valor not in str(celula.conteudo)):
+            celula = celula.proximo
+        return celula
+    
     def carro_info(self, carro):
         print("_______________________")
         print(f'Placa: {carro.placa}')
