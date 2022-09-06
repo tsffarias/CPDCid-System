@@ -1,6 +1,3 @@
-from signal import pause
-
-
 class Celula:
 
     def __init__(self, conteudo):
