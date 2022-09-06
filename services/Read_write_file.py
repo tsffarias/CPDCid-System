@@ -12,7 +12,7 @@ from pathlib import Path
 
 class Read_write_file:
 
-    def read_file(lista_duplamente_encadeada):
+    def read_file(estrutura_de_dados, tipo_estrutura):
         with open(Path("files", "veiculos.ernv"), encoding='utf8') as f:
             for line in f:
                 content_list = line.strip().split(";") # separa o conteudo pelo delimitador ; e coloca em uma lista
