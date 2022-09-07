@@ -17,11 +17,6 @@ from classes.TabelaDispercao import TabelaDispercao
 from services.Read_write_file import Read_write_file
 from services.Time_execution import Time_execution
 
-'''
-Grupo: Thiago, Eduardo, Quirino, Biel
-Título: CPDCID: PYTHON - Estrutura de Dados 2022
-'''
-
 def space():
     print("")
 
@@ -38,9 +33,10 @@ def menu_estrutura_de_dados():
 def menu():
     print("Opção 1 - Pesquisar Carro")
     print("Opção 2 - Remover Carro")
-    print("Opção 3 - Editar Carro")
-    print("Opção 4 - Relatório de Veículos")
-    print("Opção 5 - Sair do programa")
+    print("Opção 3 - Adicionar Carro")
+    print("Opção 4 - Editar Carro")
+    print("Opção 5 - Relatório de Veículos")
+    print("Opção 6 - Sair do programa")
     print("_______________________")
     space()
 
@@ -79,7 +75,7 @@ def carro_coleta_dados(placa):
     if (carro.validation_categoria(categoria)):
         carro.categoria = categoria
     else:
-        raise Exception(f'Categoria inválida: {ano_frabricacao}')
+        raise Exception(f'Categoria inválida: {categoria}')
 
     estado = input('Digite o estado: ')
     if (carro.validation_uf(estado)):
@@ -88,7 +84,7 @@ def carro_coleta_dados(placa):
         raise Exception(f'Estado inválido: {estado}')
     carro.cidade = input('Digite a cidade: ')
     
-    #estrutura_de_dados.carro_info(carro)
+    return carro
 
 def load_data(estrutura_de_dados, tipo_estrutura):
     start_time = Time_execution.start_time()  # capturando tempo inicial
@@ -127,9 +123,9 @@ if __name__ == '__main__':
 
         menu()
         # escolhendo operação
-        resposta_usuario = int(input('❐ Informe a sua opção (1 a 5): '))
+        resposta_usuario = int(input('❐ Informe a sua opção (1 a 6): '))
 
-        if resposta_usuario == 5:
+        if resposta_usuario == 6:
             print('Programa finalizado!')
             break
         elif resposta_usuario == 1:  # Pesquisar carro
@@ -160,7 +156,29 @@ if __name__ == '__main__':
                 print('Placa não existe.')
             else:
                 print(f'Carro com placa {placa} removido com sucesso.')
-        elif resposta_usuario == 3:  # editar carro
+        
+        elif resposta_usuario == 3:  # adicionar carro
+            placa = input('Digite a placa do carro: ')
+
+            # tipo de operação de acordo com o tipo estrutura
+            if tipo_estrutura == 'lista_duplamente_encadeada':
+                print('Em Desenvolvimento')
+                carro = None
+            elif tipo_estrutura == 'tabela_dispercao':
+                carro = estrutura_de_dados.__getitem__(placa)
+
+            if carro != None:
+                print('Placa já existe. Tente novamente.')
+            else:
+                carro = carro_coleta_dados(placa)
+                resultado = estrutura_de_dados.__setitem__(carro.placa, carro)
+                if resultado:
+                    print(
+                        f'Veiculo com placa {carro.placa} adicionado com sucesso.')
+                else:
+                    print('Erro: Veiculo não encontrado.')
+        
+        elif resposta_usuario == 4:  # editar carro
             placa = input('Digite a placa do carro: ')
 
             # tipo de operação de acordo com o tipo estrutura
@@ -172,9 +190,15 @@ if __name__ == '__main__':
 
             if carro is None:
                 print('Placa não existe.')
-            else:
-                dados = carro_coleta_dados(placa)
-        elif resposta_usuario == 4:  # Relatorio de veiculos
+            else:                
+                carro = carro_coleta_dados(placa)
+                resultado = estrutura_de_dados.__edititem__(carro.placa, carro)
+                if resultado:
+                    print(f'Veiculo com placa {carro.placa} editado com sucesso.')
+
+                else:
+                    print('Erro: Veiculo não encontrado.')
+        elif resposta_usuario == 5:  # Relatorio de veiculos
             # tipo de operação de acordo com o tipo estrutura
 
             print("Opção 1 - Relatório de Intervalo de Anos")
@@ -205,10 +229,8 @@ if __name__ == '__main__':
                     print('Em Desenvolvimento')
                     estrutura_de_dados.imprimir_estrutura_de_dados()
                 elif tipo_estrutura == 'tabela_dispercao':
-                    # Relatorio estadual por final de placa: o programa deve listar todos os 
-                    # veıculos de um dado estado, agrupados pelo digito final da placa.
-                    # https://stackabuse.com/python-check-if-string-contains-substring/ **************
-                    estrutura_de_dados.imprimir_estrutura_de_dados() 
+                    uf = input('Digite o estado: ')
+                    estrutura_de_dados.relatorio_estadual_final_placa(uf)
             else:
                 print('Opção inválida.')
             

@@ -4,6 +4,7 @@ Hashfunction: Soma(ascii de cada caracter da placa) MOD tamanho da tabela de dis
 Referencia 1: https://youtu.be/ea8BRGxGmlA
 Referencia 2: https://youtu.be/54iv1si4YCM
 '''
+from classes.Car import Car
 
 class TabelaDispercao:
     def __init__(self):
@@ -26,11 +27,13 @@ class TabelaDispercao:
         h = self.get_hash(key)
         found = False
         for index, element in enumerate(self.arr[h]):
-            if len(element) == 2 and element[0] == key: # quando a mesma chave é encontrada, a chave e o valor da tupla são editados
-                self.arr[h][index] = (key, val)
+            if len(element) == 2 and element[0] == key:
                 found = True
         if not found: # quando a chave não é encontrada, a tupla com a chave e valor são adicionados no hashmap
             self.arr[h].append((key, val))
+            return True
+        else:
+            return False  # caso já existir a placa retorna False
 
     def __delitem__(self, key):
         arr_index = self.get_hash(key)
@@ -40,8 +43,17 @@ class TabelaDispercao:
                 del self.arr[arr_index][index]
                 return carro
 
-    def edit_item(self):
-        pass
+    def __edititem__(self, key, val):
+        h = self.get_hash(key)
+        
+        for index, element in enumerate(self.arr[h]):
+            # quando a mesma chave é encontrada, a chave e o valor da tupla são editados
+            if len(element) == 2 and element[0] == key:
+                self.arr[h][index] = (key, val)
+                self.carro_info(self.arr[h][index][1])
+                return True
+        # caso não for encontrado retorna None     
+        return None
 
     def imprimir_estrutura_de_dados(self):
         for element in self.arr:
@@ -74,9 +86,19 @@ class TabelaDispercao:
                         num_cars += 1
         print(f'Número total de carros entre os anos {ano_inicial} e {ano_final}: {num_cars}\n')
 
-    # validar o UF e usar o search # https://stackabuse.com/python-check-if-string-contains-substring/
-    def relatorio_estadual_final_placa(self, uf, placa):
-        pass
+    def relatorio_estadual_final_placa(self, uf):
+        if (Car().validation_uf(uf)):
+            num_cars = 0
+            for element in self.arr:
+                if len(element):
+                    for carro in element:
+                        if carro[1].estado == uf.upper():
+                            digito_final = carro[1].placa[-1]
+                            self.carro_info(carro[1])
+                            num_cars += 1
+            print(f'Número total de carros do estado {uf.upper()}: {num_cars}\n')
+        else:
+            print('UF inválido, por favor tente novamente.')
 
 '''
 t = TabelaDispercao()

@@ -65,12 +65,12 @@ class Car(Vehicle):
     def validation_categoria(self, categoria):
         # sistema antigo
         categoria_sistema_antigo = (
-            'particular', 'aluguel', 'aprendizagem', 'esperiência/fabricante', 'oficial', 'representação', 'missão diplomática', 'corpo consular', 'corpo diplomático', 'organismo consular/internacional', 'acordo cooperação internacional', 'coleção')
+            'particular', 'aluguel', 'aprendizagem', 'experiência/fabricante', 'oficial', 'representação', 'missão diplomática', 'corpo consular', 'corpo diplomático', 'organismo consular/internacional', 'acordo cooperação internacional', 'coleção')
         # sistema atual
         categoria_sistema_atual = (
             'particular', 'comercial', 'especiais', 'oficial e representação', 'diplomático/consular', 'coleção')
 
-        if self.plate_pattern.lower() == 'padrão mercosul':
+        if self._padrao_placa.lower() == 'padrão mercosul':
             if categoria.lower() in categoria_sistema_atual:
                 return True
             else:
