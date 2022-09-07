@@ -136,12 +136,17 @@ if __name__ == '__main__':
                 print('Em Desenvolvimento')
                 carro = None
             elif tipo_estrutura == 'tabela_dispercao':
+                start_time = Time_execution.start_time()  # capturando tempo inicial da operacao
                 carro = estrutura_de_dados.__getitem__(placa)
 
             if carro is None:
                 print('Placa não existe.')
             else:
                 estrutura_de_dados.carro_info(carro)
+                end_time = Time_execution.end_time()  # capturando tempo final da operacao
+                # calculando o tempo de execucao
+                Time_execution.calculate_time_execution(
+                    start_time, end_time, 'Pesquisar carro')
         elif resposta_usuario == 2:  # remover carro
             placa = input('Digite a placa do carro a ser removido: ')
             
@@ -150,12 +155,18 @@ if __name__ == '__main__':
                 print('Em Desenvolvimento')
                 carro = None
             elif tipo_estrutura == 'tabela_dispercao':
+                # capturando tempo inicial da operacao
+                start_time = Time_execution.start_time()
                 carro = estrutura_de_dados.__delitem__(placa)
 
             if carro is None:
                 print('Placa não existe.')
             else:
                 print(f'Carro com placa {placa} removido com sucesso.')
+                end_time = Time_execution.end_time()  # capturando tempo final da operacao
+                # calculando o tempo de execucao
+                Time_execution.calculate_time_execution(
+                    start_time, end_time, 'Remoção de carro')
         
         elif resposta_usuario == 3:  # adicionar carro
             placa = input('Digite a placa do carro: ')
@@ -171,10 +182,16 @@ if __name__ == '__main__':
                 print('Placa já existe. Tente novamente.')
             else:
                 carro = carro_coleta_dados(placa)
+                # capturando tempo inicial da operacao
+                start_time = Time_execution.start_time()
                 resultado = estrutura_de_dados.__setitem__(carro.placa, carro)
                 if resultado:
                     print(
                         f'Veiculo com placa {carro.placa} adicionado com sucesso.')
+                    end_time = Time_execution.end_time()  # capturando tempo final da operacao
+                    # calculando o tempo de execucao
+                    Time_execution.calculate_time_execution(
+                        start_time, end_time, 'Inserção de novo carro')
                 else:
                     print('Erro: Veiculo não encontrado.')
         
@@ -192,10 +209,15 @@ if __name__ == '__main__':
                 print('Placa não existe.')
             else:                
                 carro = carro_coleta_dados(placa)
+                # capturando tempo inicial da operacao
+                start_time = Time_execution.start_time()
                 resultado = estrutura_de_dados.__edititem__(carro.placa, carro)
                 if resultado:
                     print(f'Veiculo com placa {carro.placa} editado com sucesso.')
-
+                    end_time = Time_execution.end_time()  # capturando tempo final da operacao
+                    # calculando o tempo de execucao
+                    Time_execution.calculate_time_execution(
+                        start_time, end_time, 'Edição de carro')
                 else:
                     print('Erro: Veiculo não encontrado.')
         elif resposta_usuario == 5:  # Relatorio de veiculos
@@ -216,8 +238,14 @@ if __name__ == '__main__':
                     #estrutura_de_dados.imprimir_estrutura_de_dados()
                 elif tipo_estrutura == 'tabela_dispercao':
                     if (Car().validation_ano_fabricacao(ano_inicial) and Car().validation_ano_fabricacao(ano_final) and (ano_inicial <= ano_final)):
+                        # capturando tempo inicial da operacao
+                        start_time = Time_execution.start_time()
                         estrutura_de_dados.relatorio_intervalo_tempo(
                             ano_inicial, ano_final)
+                        end_time = Time_execution.end_time()  # capturando tempo final da operacao
+                        # calculando o tempo de execucao
+                        Time_execution.calculate_time_execution(
+                            start_time, end_time, 'Relatório de Intervalo de Anos')
                     else:
                         print('Intervalo de Anos inválido.')
                 
@@ -230,7 +258,13 @@ if __name__ == '__main__':
                     estrutura_de_dados.imprimir_estrutura_de_dados()
                 elif tipo_estrutura == 'tabela_dispercao':
                     uf = input('Digite o estado: ')
+                    # capturando tempo inicial da operacao
+                    start_time = Time_execution.start_time()
                     estrutura_de_dados.relatorio_estadual_final_placa(uf)
+                    end_time = Time_execution.end_time()  # capturando tempo final da operacao
+                    # calculando o tempo de execucao
+                    Time_execution.calculate_time_execution(
+                        start_time, end_time, 'Relatório Estadual por Final de Placa')
             else:
                 print('Opção inválida.')
             
