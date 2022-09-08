@@ -131,12 +131,12 @@ if __name__ == '__main__':
         elif resposta_usuario == 1:  # Pesquisar carro
             placa = input('Digite a placa do carro: ')
             
+            # capturando tempo inicial da operacao
+            start_time = Time_execution.start_time()
             # tipo de operação de acordo com o tipo estrutura
             if tipo_estrutura == 'lista_duplamente_encadeada':
-                print('Em Desenvolvimento')
-                carro = None
+                carro = estrutura_de_dados.busca(placa)
             elif tipo_estrutura == 'tabela_dispercao':
-                start_time = Time_execution.start_time()  # capturando tempo inicial da operacao
                 carro = estrutura_de_dados.__getitem__(placa)
 
             if carro is None:
