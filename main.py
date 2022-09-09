@@ -183,13 +183,25 @@ if __name__ == '__main__':
         
         elif resposta_usuario == 3:  # adicionar carro
             placa = input('Digite a placa do carro: ')
+            carro = estrutura_de_dados.__getitem__(placa)
 
             # tipo de operação de acordo com o tipo estrutura
             if tipo_estrutura == 'lista_duplamente_encadeada':
-                print('Em Desenvolvimento')
+                if carro[0] != None:
+                    print('Placa já existe. Tente novamente.')
+                else:
+                    carro = carro_coleta_dados(placa)
+                    # capturando tempo inicial da operacao
+                    start_time = Time_execution.start_time()
+                    estrutura_de_dados.inserir_no_inicio(carro)
+                    
+                    print(f'Veiculo com placa {carro.placa} adicionado com sucesso.')
+                    end_time = Time_execution.end_time()  # capturando tempo final da operacao
+                        # calculando o tempo de execucao
+                    Time_execution.calculate_time_execution(
+                            start_time, end_time, 'Inserção de novo carro')
+                
             elif tipo_estrutura == 'tabela_dispercao':
-                carro = estrutura_de_dados.__getitem__(placa)
-
                 if carro != None:
                     print('Placa já existe. Tente novamente.')
                 else:
@@ -208,13 +220,29 @@ if __name__ == '__main__':
         
         elif resposta_usuario == 4:  # editar carro
             placa = input('Digite a placa do carro: ')
-
+            carro = estrutura_de_dados.__getitem__(placa)
+            
             # tipo de operação de acordo com o tipo estrutura
             if tipo_estrutura == 'lista_duplamente_encadeada':
-                print('Em Desenvolvimento')
+                if carro[0] is None:
+                    print('Placa não existe.')
+                else:
+                    carro = carro_coleta_dados(placa)
+                    # capturando tempo inicial da operacao
+                    start_time = Time_execution.start_time()
+                    resultado = estrutura_de_dados.__edititem__(placa, carro)
+                    if resultado:
+                        print(
+                            f'Veiculo com placa {carro.placa} editado com sucesso.')
+                        end_time = Time_execution.end_time()  # capturando tempo final da operacao
+                        # calculando o tempo de execucao
+                        Time_execution.calculate_time_execution(
+                            start_time, end_time, 'Edição de carro')
+                    else:
+                        print('Erro: Veiculo não encontrado.')
+                
             elif tipo_estrutura == 'tabela_dispercao':
-                carro = estrutura_de_dados.__getitem__(placa)
-
+                
                 if carro is None:
                     print('Placa não existe.')
                 else:                
@@ -245,7 +273,6 @@ if __name__ == '__main__':
                 
                 if tipo_estrutura == 'lista_duplamente_encadeada':
                     print('Em Desenvolvimento')
-                    #estrutura_de_dados.imprimir_estrutura_de_dados()
                 elif tipo_estrutura == 'tabela_dispercao':
                     if (Car().validation_ano_fabricacao(ano_inicial) and Car().validation_ano_fabricacao(ano_final) and (ano_inicial <= ano_final)):
                         # capturando tempo inicial da operacao

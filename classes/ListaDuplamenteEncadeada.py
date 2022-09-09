@@ -142,6 +142,15 @@ class ListaDuplamenteEncadeada:
         celula = self._celula(posicao) 
         return celula.conteudo
 
+    def __edititem__(self, placa, carro):        
+        celula = self.inicio
+        for i in range(0, self.quantidade):
+            if placa == celula.conteudo.placa:
+                celula.conteudo = carro
+                return True
+            celula = celula.proximo
+        return None
+
     def __getitem__(self, placa):
         celula = self.inicio
         posicao = 0
