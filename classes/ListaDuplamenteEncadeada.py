@@ -122,7 +122,7 @@ class ListaDuplamenteEncadeada:
         self._quantidade -= 1
         return removido.conteudo
 
-    def remover(self, posicao):
+    def __delitem__(self, posicao):
         if posicao == 0:
             return self.remover_do_inicio()
 
@@ -138,18 +138,21 @@ class ListaDuplamenteEncadeada:
         direita.anterior = esquerda
         self._quantidade -= 1
 
-        return removido.conteudo
-
     def item(self, posicao):
-        celula = self._celula(posicao)        
+        celula = self._celula(posicao) 
         return celula.conteudo
-    
-    def busca(self, valor):
+
+    def __getitem__(self, placa):
         celula = self.inicio
-        while celula and (valor not in str(celula.conteudo)):
+        posicao = 0
+        for i in range(0, self.quantidade):
+            if placa == celula.conteudo.placa:
+                break
             celula = celula.proximo
-        return celula
-    
+            posicao += 1
+
+        return [celula, posicao]
+
     def carro_info(self, carro):
         print("_______________________")
         print(f'Placa: {carro.conteudo.placa}')

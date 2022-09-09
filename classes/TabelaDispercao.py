@@ -22,6 +22,7 @@ class TabelaDispercao:
         for kv in self.arr[arr_index]:
             if kv[0] == key:
                 return kv[1]
+        return None
 
     def __setitem__(self, key, val):
         h = self.get_hash(key)
@@ -100,26 +101,4 @@ class TabelaDispercao:
         else:
             print('UF inválido, por favor tente novamente.')
 
-'''
-t = TabelaDispercao()
-t["march 6"] = 310
-t["march 7"] = 420
-t["march 8"] = 67
-t["march 17"] = 63457
-
-print(t["march 6"])
-print(t["march 17"])
-print(t.arr)
-t["march 6"] = 11 # editando
-print(t.arr)
-print(t["march 6"])
-del t["march 6"]
-print(t.arr)
-
-#print(estrutura_de_dados.imprimir_estrutura_de_dados())
-#print(estrutura_de_dados.__delitem__('IDE6N11'))
-#print(estrutura_de_dados.arr)
-
-# cz commit
-'''
 

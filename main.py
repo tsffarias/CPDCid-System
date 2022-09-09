@@ -135,37 +135,50 @@ if __name__ == '__main__':
             start_time = Time_execution.start_time()
             # tipo de operação de acordo com o tipo estrutura
             if tipo_estrutura == 'lista_duplamente_encadeada':
-                carro = estrutura_de_dados.busca(placa)
+                carro = estrutura_de_dados.__getitem__(placa)
+                if carro[0] is None:
+                    print('Placa não existe.')
+                else:
+                    estrutura_de_dados.carro_info(carro[0])
+
             elif tipo_estrutura == 'tabela_dispercao':
                 carro = estrutura_de_dados.__getitem__(placa)
-
-            if carro is None:
-                print('Placa não existe.')
-            else:
-                estrutura_de_dados.carro_info(carro)
-                end_time = Time_execution.end_time()  # capturando tempo final da operacao
-                # calculando o tempo de execucao
-                Time_execution.calculate_time_execution(
-                    start_time, end_time, 'Pesquisar carro')
+                if carro is None:
+                    print('Placa não existe.')
+                else:
+                    estrutura_de_dados.carro_info(carro)
+            
+            end_time = Time_execution.end_time()  # capturando tempo final da operacao
+            # calculando o tempo de execucao
+            Time_execution.calculate_time_execution(
+                start_time, end_time, 'Pesquisar carro')
         elif resposta_usuario == 2:  # remover carro
             placa = input('Digite a placa do carro a ser removido: ')
             
             # tipo de operação de acordo com o tipo estrutura
             if tipo_estrutura == 'lista_duplamente_encadeada':
-                print('Em Desenvolvimento')
-                carro = None
+                # capturando tempo inicial da operacao
+                carro = estrutura_de_dados.__getitem__(placa)
+                if carro[0] is None:
+                    print('Placa não existe.')
+                else:
+                    start_time = Time_execution.start_time()
+                    estrutura_de_dados.__delitem__(carro[1])
+                    print(f'Carro com placa {placa} removido com sucesso.')
+
             elif tipo_estrutura == 'tabela_dispercao':
                 # capturando tempo inicial da operacao
                 start_time = Time_execution.start_time()
                 carro = estrutura_de_dados.__delitem__(placa)
+                if carro is None:
+                    print('Placa não existe.')
+                else:
+                    print(f'Carro com placa {placa} removido com sucesso.')
 
-            if carro is None:
-                print('Placa não existe.')
-            else:
-                print(f'Carro com placa {placa} removido com sucesso.')
-                end_time = Time_execution.end_time()  # capturando tempo final da operacao
-                # calculando o tempo de execucao
-                Time_execution.calculate_time_execution(
+            
+            end_time = Time_execution.end_time()  # capturando tempo final da operacao
+            # calculando o tempo de execucao
+            Time_execution.calculate_time_execution(
                     start_time, end_time, 'Remoção de carro')
         
         elif resposta_usuario == 3:  # adicionar carro
@@ -174,26 +187,24 @@ if __name__ == '__main__':
             # tipo de operação de acordo com o tipo estrutura
             if tipo_estrutura == 'lista_duplamente_encadeada':
                 print('Em Desenvolvimento')
-                carro = None
             elif tipo_estrutura == 'tabela_dispercao':
                 carro = estrutura_de_dados.__getitem__(placa)
 
-            if carro != None:
-                print('Placa já existe. Tente novamente.')
-            else:
-                carro = carro_coleta_dados(placa)
-                # capturando tempo inicial da operacao
-                start_time = Time_execution.start_time()
-                resultado = estrutura_de_dados.__setitem__(carro.placa, carro)
-                if resultado:
-                    print(
-                        f'Veiculo com placa {carro.placa} adicionado com sucesso.')
-                    end_time = Time_execution.end_time()  # capturando tempo final da operacao
-                    # calculando o tempo de execucao
-                    Time_execution.calculate_time_execution(
-                        start_time, end_time, 'Inserção de novo carro')
+                if carro != None:
+                    print('Placa já existe. Tente novamente.')
                 else:
-                    print('Erro: Veiculo não encontrado.')
+                    carro = carro_coleta_dados(placa)
+                    # capturando tempo inicial da operacao
+                    start_time = Time_execution.start_time()
+                    resultado = estrutura_de_dados.__setitem__(carro.placa, carro)
+                    if resultado:
+                        print(f'Veiculo com placa {carro.placa} adicionado com sucesso.')
+                        end_time = Time_execution.end_time()  # capturando tempo final da operacao
+                        # calculando o tempo de execucao
+                        Time_execution.calculate_time_execution(
+                            start_time, end_time, 'Inserção de novo carro')
+                    else:
+                        print('Erro: Veiculo não encontrado.')
         
         elif resposta_usuario == 4:  # editar carro
             placa = input('Digite a placa do carro: ')
@@ -201,25 +212,24 @@ if __name__ == '__main__':
             # tipo de operação de acordo com o tipo estrutura
             if tipo_estrutura == 'lista_duplamente_encadeada':
                 print('Em Desenvolvimento')
-                carro = None
             elif tipo_estrutura == 'tabela_dispercao':
                 carro = estrutura_de_dados.__getitem__(placa)
 
-            if carro is None:
-                print('Placa não existe.')
-            else:                
-                carro = carro_coleta_dados(placa)
-                # capturando tempo inicial da operacao
-                start_time = Time_execution.start_time()
-                resultado = estrutura_de_dados.__edititem__(carro.placa, carro)
-                if resultado:
-                    print(f'Veiculo com placa {carro.placa} editado com sucesso.')
-                    end_time = Time_execution.end_time()  # capturando tempo final da operacao
-                    # calculando o tempo de execucao
-                    Time_execution.calculate_time_execution(
-                        start_time, end_time, 'Edição de carro')
-                else:
-                    print('Erro: Veiculo não encontrado.')
+                if carro is None:
+                    print('Placa não existe.')
+                else:                
+                    carro = carro_coleta_dados(placa)
+                    # capturando tempo inicial da operacao
+                    start_time = Time_execution.start_time()
+                    resultado = estrutura_de_dados.__edititem__(carro.placa, carro)
+                    if resultado:
+                        print(f'Veiculo com placa {carro.placa} editado com sucesso.')
+                        end_time = Time_execution.end_time()  # capturando tempo final da operacao
+                        # calculando o tempo de execucao
+                        Time_execution.calculate_time_execution(
+                            start_time, end_time, 'Edição de carro')
+                    else:
+                        print('Erro: Veiculo não encontrado.')
         elif resposta_usuario == 5:  # Relatorio de veiculos
             # tipo de operação de acordo com o tipo estrutura
 
