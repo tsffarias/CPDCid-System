@@ -1,3 +1,8 @@
+'''
+Lista Duplamente Encadeada - Doubly linked list
+Referencia: https://github.com/DarlanNoetzold/Estrutura_de_Dados/blob/main/ListaDuplamenteLigada/aula2/ed/ed/lista_duplamente_ligada.py
+'''
+
 class Celula:
 
     def __init__(self, conteudo):
