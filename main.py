@@ -135,7 +135,7 @@ if __name__ == '__main__':
             start_time = Time_execution.start_time()
             # tipo de operação de acordo com o tipo estrutura
             if tipo_estrutura == 'lista_duplamente_encadeada':
-                carro = estrutura_de_dados.busca(placa)
+                carro = estrutura_de_dados.buscaPlaca(placa)
             elif tipo_estrutura == 'tabela_dispercao':
                 carro = estrutura_de_dados.__getitem__(placa)
 

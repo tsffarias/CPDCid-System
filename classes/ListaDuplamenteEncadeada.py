@@ -149,7 +149,27 @@ class ListaDuplamenteEncadeada:
         while celula and (valor not in str(celula.conteudo)):
             celula = celula.proximo
         return celula
-    
+
+    def atualizaPlacaAntiga(placa):
+        letras = ['A','B','C','D','E','F','G','H','I','J']
+        aux = list(placa)
+        aux[4] = letras[int(placa[4])]
+        placa = ''.join(aux)
+        return placa
+
+    def buscaPlaca(self,valor):
+        resultBusca = self.busca(valor)
+        if(resultBusca):
+            return resultBusca
+        else:
+            placa = self.atualizaPlacaAntiga(valor)
+            resultBusca = self.busca(placa)
+            if(resultBusca):
+                return "A placa foi atualizada para " + placa
+            else:
+                return "Não encontrada"
+
+
     def carro_info(self, carro):
         print("_______________________")
         print(f'Placa: {carro.conteudo.placa}')

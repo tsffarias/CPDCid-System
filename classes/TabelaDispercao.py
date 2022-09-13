@@ -8,7 +8,7 @@ from classes.Car import Car
 
 class TabelaDispercao:
     def __init__(self):
-        self.MAX = 400
+        self.MAX = 100
         self.arr = [[] for i in range(self.MAX)]
 
     def get_hash(self, key):
