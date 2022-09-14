@@ -5,7 +5,9 @@
 # Created Date: date/month/time ..etc
 # version ='1.0'
 # ---------------------------------------------------------------------------
-""" Details about the module and for what purpose it was built for"""
+""" Realiza as operações básicas de leitura e escrita em arquivo
+fornecendo o comportamento de persistencia do sistema
+"""
 
 from classes.Car import Car
 from pathlib import Path
