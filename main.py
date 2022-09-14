@@ -129,7 +129,7 @@ if __name__ == '__main__':
             print('Programa finalizado!')
             break
         elif resposta_usuario == 1:  # Pesquisar carro
-            placa = input('Digite a placa do carro: ')
+            placa = input('Digite a placa do carro: ').upper()
             
             # capturando tempo inicial da operacao
             start_time = Time_execution.start_time()
