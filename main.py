@@ -16,6 +16,7 @@ from classes.ListaDuplamenteEncadeada import ListaDuplamenteEncadeada
 from classes.TabelaDispercao import TabelaDispercao
 from services.Read_write_file import Read_write_file
 from services.Time_execution import Time_execution
+import os
 
 def space():
     print("")
@@ -113,6 +114,7 @@ if __name__ == '__main__':
         tipo_estrutura = 'tabela_dispercao'
 
     estrutura_de_dados = load_data(estrutura_de_dados, tipo_estrutura)
+    os.system('clear') # limpa terminal
 
     while (True):
 
@@ -311,6 +313,7 @@ if __name__ == '__main__':
         space()
         resposta_nova_solicitacao = int(
             input('Digite (1), se desejar voltar ao menu e (2) caso deseje finalizar: '))
+        os.system('clear')
         if resposta_nova_solicitacao == 2:
             print('Programa finalizado!')
             break
