@@ -1,3 +1,9 @@
+'''
+Arvore Binaria de Busca
+Referencia 1:  https://youtu.be/f5dU3xoE6ms
+Referencia 2:  https://youtu.be/Zaf8EOVa72I
+'''
+
 class node:
     def __init__(self, value=None, car=None):
         self.value = value
