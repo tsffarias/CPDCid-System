@@ -14,6 +14,7 @@ Título: CPDCID: PYTHON - Estrutura de Dados 2022
 from classes.Car import Car
 from classes.ListaDuplamenteEncadeada import ListaDuplamenteEncadeada
 from classes.TabelaDispercao import TabelaDispercao
+from classes.BinarySearchTree import BinarySearchTree
 from classes.AVLTree import AVLTree
 from services.Read_write_file import Read_write_file
 from services.Time_execution import Time_execution
@@ -26,8 +27,9 @@ def space():
 def menu_estrutura_de_dados():
     print("Opção 1 - Lista Duplamente Encadeada")
     print("Opção 2 - Tabela de Disperção (Encadeamento Externo)")
-    print("Opção 3 - Arvore AVL")
-    print("Opção 4 - Em Desenvolvimento")
+    print("Opção 3 - Arvore Binaria de Busca")
+    print("Opção 4 - Arvore AVL")
+    print("Opção 5 - Em Desenvolvimento")
     print("_______________________")
     space()
 
@@ -114,6 +116,9 @@ if __name__ == '__main__':
         estrutura_de_dados = TabelaDispercao()
         tipo_estrutura = 'tabela_dispercao'
     elif resposta_usuario == 3:
+        estrutura_de_dados = BinarySearchTree()
+        tipo_estrutura = 'arvore_binaria_busca'
+    elif resposta_usuario == 4:
         estrutura_de_dados = AVLTree()
         tipo_estrutura = 'arvore_avl'
 
@@ -154,6 +159,13 @@ if __name__ == '__main__':
                 else:
                     estrutura_de_dados.carro_info(carro)
 
+            elif tipo_estrutura == 'arvore_binaria_busca':
+                carro = estrutura_de_dados.find(placa)
+                if carro is None:
+                    print('Placa não existe.')
+                else:
+                    estrutura_de_dados.carro_info(carro.car)
+
             elif tipo_estrutura == 'arvore_avl':
                 carro = estrutura_de_dados.find(placa)
                 if carro is None:
@@ -184,6 +196,15 @@ if __name__ == '__main__':
                 start_time = Time_execution.start_time()
                 carro = estrutura_de_dados.__delitem__(placa)
                 if carro is None:
+                    print('Placa não existe.')
+                else:
+                    print(f'Carro com placa {placa} removido com sucesso.')
+            
+            elif tipo_estrutura == 'arvore_binaria_busca':
+                # capturando tempo inicial da operacao
+                start_time = Time_execution.start_time()
+                carro = estrutura_de_dados.delete_value(placa)
+                if carro is not None:
                     print('Placa não existe.')
                 else:
                     print(f'Carro com placa {placa} removido com sucesso.')

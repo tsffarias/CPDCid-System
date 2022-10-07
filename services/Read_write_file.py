@@ -32,6 +32,8 @@ class Read_write_file:
                     estrutura_de_dados.__setitem__(carro.placa, carro)
                 elif tipo_estrutura == 'lista_duplamente_encadeada':
                     estrutura_de_dados.inserir_no_inicio(carro)
+                elif tipo_estrutura == 'arvore_binaria_busca':
+                    estrutura_de_dados.insert(carro.placa, carro)
                 elif tipo_estrutura == 'arvore_avl':
                     estrutura_de_dados.insert(carro.placa, carro)
 
