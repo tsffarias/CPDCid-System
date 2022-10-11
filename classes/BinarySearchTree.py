@@ -4,6 +4,8 @@ Referencia 1:  https://youtu.be/f5dU3xoE6ms
 Referencia 2:  https://youtu.be/Zaf8EOVa72I
 '''
 
+from classes.Car import Car
+
 class node:
     def __init__(self, value=None, car=None):
         self.value = value
@@ -192,3 +194,38 @@ class BinarySearchTree:
         print(f'Cidade: {carro.cidade}')
         print("_______________________")
         print("")
+
+    def relatorio_intervalo_tempo(self, ano_inicial, ano_final):
+        if self.root != None:
+            for ano in range(int(ano_inicial), int(ano_final)+1):
+                self._relatorio_intervalo_tempo(self.root, ano)
+        else:
+            print('Arvore binaria de busca vazia')
+
+    def _relatorio_intervalo_tempo(self, cur_node, ano):
+        if cur_node != None:
+            self._relatorio_intervalo_tempo(
+                cur_node.left_child, ano)
+            if int(cur_node.car.ano_frabricacao) == int(ano):
+                self.carro_info(cur_node.car)
+            self._relatorio_intervalo_tempo(
+                cur_node.right_child, ano)
+
+    def relatorio_estadual_final_placa(self, uf):
+        if (Car().validation_uf(uf)):
+            if self.root != None:
+                self._relatorio_estadual_final_placa(self.root, uf)
+            else:
+                print('Arvore binaria de busca vazia')
+        else:
+            print('UF inválido, por favor tente novamente.')
+    
+    def _relatorio_estadual_final_placa(self, cur_node, uf):
+        if cur_node != None:
+            self._relatorio_estadual_final_placa(
+                cur_node.left_child, uf)
+            if cur_node.car.estado == uf.upper():
+                self.carro_info(cur_node.car)
+            self._relatorio_estadual_final_placa(
+                cur_node.right_child, uf)
+
