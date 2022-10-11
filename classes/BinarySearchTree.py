@@ -198,34 +198,36 @@ class BinarySearchTree:
     def relatorio_intervalo_tempo(self, ano_inicial, ano_final):
         if self.root != None:
             for ano in range(int(ano_inicial), int(ano_final)+1):
-                self._relatorio_intervalo_tempo(self.root, ano)
+                self._relatorio_intervalo_tempo(self.root, ano, 'padrão antigo')
+                self._relatorio_intervalo_tempo(self.root, ano, 'padrão mercosul')
         else:
             print('Arvore binaria de busca vazia')
 
-    def _relatorio_intervalo_tempo(self, cur_node, ano):
+    def _relatorio_intervalo_tempo(self, cur_node, ano, padrao_placa):
         if cur_node != None:
             self._relatorio_intervalo_tempo(
-                cur_node.left_child, ano)
-            if int(cur_node.car.ano_frabricacao) == int(ano):
+                cur_node.left_child, ano, padrao_placa)
+            if int(cur_node.car.ano_frabricacao) == int(ano) and cur_node.car._padrao_placa.lower() == padrao_placa:
                 self.carro_info(cur_node.car)
             self._relatorio_intervalo_tempo(
-                cur_node.right_child, ano)
+                cur_node.right_child, ano, padrao_placa)
 
     def relatorio_estadual_final_placa(self, uf):
         if (Car().validation_uf(uf)):
             if self.root != None:
-                self._relatorio_estadual_final_placa(self.root, uf)
+                self._relatorio_estadual_final_placa(self.root, uf, 'padrão antigo')
+                self._relatorio_estadual_final_placa(self.root, uf, 'padrão mercosul')
             else:
                 print('Arvore binaria de busca vazia')
         else:
             print('UF inválido, por favor tente novamente.')
     
-    def _relatorio_estadual_final_placa(self, cur_node, uf):
+    def _relatorio_estadual_final_placa(self, cur_node, uf, padrao_placa):
         if cur_node != None:
             self._relatorio_estadual_final_placa(
-                cur_node.left_child, uf)
-            if cur_node.car.estado == uf.upper():
+                cur_node.left_child, uf, padrao_placa)
+            if cur_node.car.estado == uf.upper() and cur_node.car._padrao_placa.lower() == padrao_placa:
                 self.carro_info(cur_node.car)
             self._relatorio_estadual_final_placa(
-                cur_node.right_child, uf)
+                cur_node.right_child, uf, padrao_placa)
 
