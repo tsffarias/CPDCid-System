@@ -180,16 +180,9 @@ class ListaDuplamenteEncadeada:
 
 
     def carro_info(self, carro):
-        print("_______________________")
-        print(f'Placa: {carro.conteudo.placa}')
-        print(f'Padrão Placa: {carro.conteudo.padrao_placa}')
-        print(f'Renavam: {carro.conteudo.renavam}')
-        print(f'Marca: {carro.conteudo.marca}')
-        print(f'Modelo: {carro.conteudo.modelo}')
-        print(f'Ano Fabricação: {carro.conteudo.ano_frabricacao}')
-        print(f'Cor: {carro.conteudo.cor}')
-        print(f'Categoria: {carro.conteudo.categoria}')
-        print(f'Estado: {carro.conteudo.estado}')
-        print(f'Cidade: {carro.conteudo.cidade}')
+        print("")
+        print(f'\033[92m\033[1mPlaca:\033[0m {carro.conteudo.placa}\t\033[92m\033[1mPadrão Placa:\033[0m {carro.conteudo.padrao_placa}\t\033[92m\033[1mRenavam:\033[0m {carro.conteudo.renavam}')
+        print(f'\033[92m\033[1mMarca:\033[0m {carro.conteudo.marca}\t\033[92m\033[1mModelo:\033[0m {carro.conteudo.modelo}\t\033[92m\033[1m Ano Fab:\033[0m {carro.conteudo.ano_frabricacao}')
+        print(f'\033[92m\033[1mCor:\033[0m {carro.conteudo.cor}\t\033[92m\033[1mCategoria:\033[0m {carro.conteudo.categoria}\t\033[92m\033[1mEstado:\033[0m {carro.conteudo.estado}\t\033[92m\033[1mCidade:\033[0m {carro.conteudo.cidade}')
         print("_______________________")
         print("")

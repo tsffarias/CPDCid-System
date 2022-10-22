@@ -5,7 +5,8 @@
 # Created Date: date/month/time ..etc
 # version ='1.0'
 # ---------------------------------------------------------------------------
-""" Realiza as operações básicas de leitura e escrita em arquivo
+""" 
+Realiza as operações básicas de leitura e escrita em arquivo
 fornecendo o comportamento de persistencia do sistema
 """
 
