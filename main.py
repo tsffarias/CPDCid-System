@@ -122,7 +122,7 @@ if __name__ == '__main__':
         estrutura_de_dados = AVLTree()
         tipo_estrutura = 'arvore_avl'
 
-    os.system('clear')  # limpa terminal
+    os.system('cls' if os.name == 'nt' else 'clear') # limpa terminal
     estrutura_de_dados = load_data(estrutura_de_dados, tipo_estrutura)
 
     while (True):
@@ -396,7 +396,7 @@ if __name__ == '__main__':
         space()
         resposta_nova_solicitacao = int(
             input('Digite (1), se desejar voltar ao menu e (2) caso deseje finalizar: '))
-        os.system('clear')
+        os.system('cls' if os.name == 'nt' else 'clear')
         if resposta_nova_solicitacao == 2:
             print('Programa finalizado!')
             break
