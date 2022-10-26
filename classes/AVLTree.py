@@ -91,7 +91,7 @@ class AVLTree:
 			else:
 				self._insert(value, car, cur_node.right_child)
 		else:
-			print("Value already in tree!")
+			print("Valor já está na arvore!")
 
 	def print_tree(self):
 		if self.root != None:
