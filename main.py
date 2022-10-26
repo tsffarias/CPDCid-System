@@ -20,7 +20,9 @@ from services.Read_write_file import Read_write_file
 from services.Time_execution import Time_execution
 import os
 
-
+'''
+Limpa o terminal independente do sistema operacional
+'''
 def clear_screen():
     os.system("cls" if os.name == 'nt' else "clear")    
 
