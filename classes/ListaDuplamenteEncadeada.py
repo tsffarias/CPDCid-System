@@ -25,6 +25,8 @@ class ListaDuplamenteEncadeada:
     def quantidade(self):
         return self._quantidade
 
+
+    #@TODO: terminar relatório
     def imprimir_estrutura_de_dados(self):
         atual = self.inicio
         for i in range(0, self.quantidade):
