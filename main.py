@@ -126,6 +126,8 @@ if __name__ == '__main__':
         resposta_usuario = int(input('❐ Informe a sua opção (1 a 6): '))
 
         if resposta_usuario == 6:
+            print('Gravando dados')
+            Read_write_file.write_file(estrutura_de_dados, tipo_estrutura)
             print('Programa finalizado!')
             break
         elif resposta_usuario == 1:  # Pesquisar carro

@@ -12,10 +12,15 @@ fornecendo o comportamento de persistencia do sistema
 
 from classes.Car import Car
 from pathlib import Path
+import pickle
+from os.path import exists
+
+
 
 class Read_write_file:
 
-    def read_file(estrutura_de_dados, tipo_estrutura):
+    def read_file(estrutura_de_dados, tipo_estrutura):      
+        
         with open(Path("files", "veiculos_test.ernv"), encoding='utf8') as f:
             for line in f:
                 content_list = line.strip().split(";") # separa o conteudo pelo delimitador ; e coloca em uma lista
@@ -37,3 +42,21 @@ class Read_write_file:
                     estrutura_de_dados.inserir_no_inicio(carro)
 
         return estrutura_de_dados
+    
+    def write_file(estrutura_de_dados, tipo_estrutura):
+        # open a file, where you stored the pickled data
+        
+        file = open(Path("files", "commands.pickle"), 'wb')
+        # dump information to that file
+        pickle.dump(tipo_estrutura, file)
+
+        # close the file
+        file.close()
+        
+        file = open(Path("files", "veiculos_save.pickle"), 'wb')
+        # dump information to that file
+        pickle.dump(estrutura_de_dados, file)
+
+        # close the file
+        file.close()
+
