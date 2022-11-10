@@ -2,6 +2,7 @@
 Lista Duplamente Encadeada - Doubly linked list
 Referencia: https://github.com/DarlanNoetzold/Estrutura_de_Dados/blob/main/ListaDuplamenteLigada/aula2/ed/ed/lista_duplamente_ligada.py
 '''
+from classes.Car import Car
 
 class Celula:
 
@@ -190,3 +191,41 @@ class ListaDuplamenteEncadeada:
         print(f'Cidade: {carro.conteudo.cidade}')
         print("_______________________")
         print("")
+        
+
+    def relatorio_intervalo_tempo(self, ano_inicial, ano_final):
+        if self.quantidade != 0:
+            for ano in range(int(ano_inicial), int(ano_final)+1):
+                self._relatorio_intervalo_tempo(ano, 'padrão antigo')
+                self._relatorio_intervalo_tempo(ano, 'padrão mercosul')
+        else:
+            print('Lista Duplamente Encadeada Vazia')
+
+    def _relatorio_intervalo_tempo(self, ano, padrao_placa):
+        num_cars = 0
+        atual = self.inicio
+        for i in range(0, self.quantidade):
+            if int(atual.conteudo.ano_frabricacao) == int(ano) and atual.conteudo._padrao_placa.lower() == padrao_placa:
+                self.carro_info(atual)
+                num_cars += 1
+            atual = atual.proximo
+
+    def relatorio_estadual_final_placa(self, uf):
+        if (Car().validation_uf(uf)):
+            if self.quantidade != 0:
+                self._relatorio_estadual_final_placa(uf, 'padrão antigo')
+                self._relatorio_estadual_final_placa(uf, 'padrão mercosul')
+            else:
+                print('Lista Duplamente Encadeada Vazia')
+        else:
+            print('UF inválido, por favor tente novamente.')
+
+    def _relatorio_estadual_final_placa(self, uf, padrao_placa):
+        atual = self.inicio
+        for i in range(0, self.quantidade):
+            if atual.conteudo.estado == uf.upper() and atual.conteudo._padrao_placa.lower() == padrao_placa:
+                self.carro_info(atual)
+            atual = atual.proximo
+
+
+

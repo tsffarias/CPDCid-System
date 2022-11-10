@@ -328,7 +328,17 @@ if __name__ == '__main__':
                 ano_final = input('Digite o ano final: ')
                 
                 if tipo_estrutura == 'lista_duplamente_encadeada':
-                    print('Em Desenvolvimento')
+                    if (Car().validation_ano_fabricacao(ano_inicial) and Car().validation_ano_fabricacao(ano_final) and (ano_inicial <= ano_final)):
+                        # capturando tempo inicial da operacao
+                        start_time = Time_execution.start_time()
+                        estrutura_de_dados.relatorio_intervalo_tempo(
+                            ano_inicial, ano_final)
+                        end_time = Time_execution.end_time()  # capturando tempo final da operacao
+                        # calculando o tempo de execucao
+                        Time_execution.calculate_time_execution(
+                            start_time, end_time, 'Relatório de Intervalo de Anos')
+                    else:
+                        print('Intervalo de Anos inválido.')
                 elif tipo_estrutura == 'tabela_dispercao':
                     if (Car().validation_ano_fabricacao(ano_inicial) and Car().validation_ano_fabricacao(ano_final) and (ano_inicial <= ano_final)):
                         # capturando tempo inicial da operacao
@@ -369,32 +379,29 @@ if __name__ == '__main__':
             
             
             elif (resposta_usuario == 2): # Relatório Estadual por Final de Placa
-                
+                uf = input('Digite o estado: ')
+                # capturando tempo inicial da operacao
+                start_time = Time_execution.start_time()
+
                 if tipo_estrutura == 'lista_duplamente_encadeada':
-                    print('Em Desenvolvimento')
-                    estrutura_de_dados.imprimir_estrutura_de_dados()
+                    estrutura_de_dados.relatorio_estadual_final_placa(uf)
+                    end_time = Time_execution.end_time()  # capturando tempo final da operacao
+                    # calculando o tempo de execucao
+                    Time_execution.calculate_time_execution(
+                        start_time, end_time, 'Relatório Estadual por Final de Placa')
                 elif tipo_estrutura == 'tabela_dispercao':
-                    uf = input('Digite o estado: ')
-                    # capturando tempo inicial da operacao
-                    start_time = Time_execution.start_time()
                     estrutura_de_dados.relatorio_estadual_final_placa(uf)
                     end_time = Time_execution.end_time()  # capturando tempo final da operacao
                     # calculando o tempo de execucao
                     Time_execution.calculate_time_execution(
                         start_time, end_time, 'Relatório Estadual por Final de Placa')
                 elif tipo_estrutura == 'arvore_binaria_busca':
-                    uf = input('Digite o estado: ')
-                    # capturando tempo inicial da operacao
-                    start_time = Time_execution.start_time()
                     estrutura_de_dados.relatorio_estadual_final_placa(uf)
                     end_time = Time_execution.end_time()  # capturando tempo final da operacao
                     # calculando o tempo de execucao
                     Time_execution.calculate_time_execution(
                         start_time, end_time, 'Relatório Estadual por Final de Placa')
                 elif tipo_estrutura == 'arvore_avl':
-                    uf = input('Digite o estado: ')
-                    # capturando tempo inicial da operacao
-                    start_time = Time_execution.start_time()
                     estrutura_de_dados.relatorio_estadual_final_placa(uf)
                     end_time = Time_execution.end_time()  # capturando tempo final da operacao
                     # calculando o tempo de execucao
@@ -420,3 +427,4 @@ if __name__ == '__main__':
             Time_execution.calculate_time_execution(
                 start_time, end_time, 'Salvando Arquivo')
             break
+
