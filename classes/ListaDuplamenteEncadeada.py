@@ -36,6 +36,15 @@ class ListaDuplamenteEncadeada:
             print(atual.conteudo)
             atual = atual.proximo
 
+    def preparando_salvamento_dados(self):
+        atual = self.inicio
+        dados_estrutura = []
+        for i in range(0, self.quantidade):
+            dados_estrutura.append(str(atual.conteudo))
+            atual = atual.proximo
+
+        return dados_estrutura
+
     def _inserir_em_lista_vazia(self, conteudo):
         celula = Celula(conteudo)
         self._inicio = celula

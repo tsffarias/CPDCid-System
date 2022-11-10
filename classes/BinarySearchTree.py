@@ -6,6 +6,8 @@ Referencia 2:  https://youtu.be/Zaf8EOVa72I
 
 from classes.Car import Car
 
+dados_bst = []
+
 class node:
     def __init__(self, value=None, car=None):
         self.value = value
@@ -48,8 +50,13 @@ class BinarySearchTree:
     def _print_tree(self, cur_node):
         if cur_node != None:
             self._print_tree(cur_node.left_child)
-            print(f'key = {str(cur_node.value)} / car = {str(cur_node.car)}  / height = {cur_node.height}')
+            #print(f'key = {str(cur_node.value)} / car = {str(cur_node.car)}  / height = {cur_node.height}')
+            dados_bst.append(str(cur_node.car))
             self._print_tree(cur_node.right_child)
+
+    def preparando_salvamento_dados(self):
+        self.print_tree()
+        return dados_bst
 
     def height(self):
         if self.root != None:

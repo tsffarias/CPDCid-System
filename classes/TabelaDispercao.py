@@ -62,6 +62,15 @@ class TabelaDispercao:
                 for i in element:
                     print(i[1].__str__())
 
+    def preparando_salvamento_dados(self):
+        dados_estrutura = []
+        for element in self.arr:
+            if len(element):
+                for i in element:
+                    dados_estrutura.append(str(i[1].__str__()))
+
+        return dados_estrutura
+
     def carro_info(self, carro):
         print("_______________________")
         print(f'Placa: {carro.placa}')

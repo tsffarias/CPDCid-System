@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-#----------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
 # Created By  : name_of_the_creator   Line 3
 # Created Date: date/month/time ..etc
 # version ='1.0'
@@ -10,15 +10,25 @@
 from classes.Car import Car
 from pathlib import Path
 
+file_name = 'veiculos_test'
+
 class Read_write_file:
 
+    def save_file(estrutura_de_dados):
+        with open(Path("files", f"{file_name}.ernv"), mode="w", encoding='utf8') as file:
+            estrutura_de_dados = estrutura_de_dados.preparando_salvamento_dados()
+            file.write("\n".join(estrutura_de_dados))
+
     def read_file(estrutura_de_dados, tipo_estrutura):
-        with open(Path("files", "veiculos.ernv"), encoding='utf8') as f:
+        with open(Path("files", f"{file_name}.ernv"), encoding='utf8') as f:
             for line in f:
-                content_list = line.strip().split(";") # separa o conteudo pelo delimitador ; e coloca em uma lista
-                carro = Car() # criando objeto carro
-                carro.placa = content_list[0] # inserindo dados do carro no objeto
-                carro.padrao_placa = carro.validation_pattern_plate(carro.placa) # validando padrão de placa
+                # separa o conteudo pelo delimitador ; e coloca em uma lista
+                content_list = line.strip().split(";")
+                carro = Car()  # criando objeto carro
+                # inserindo dados do carro no objeto
+                carro.placa = content_list[0]
+                carro.padrao_placa = carro.validation_pattern_plate(
+                    carro.placa)  # validando padrão de placa
                 carro.renavam = content_list[1]
                 carro.marca = content_list[2]
                 carro.modelo = content_list[3]

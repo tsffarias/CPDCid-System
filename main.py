@@ -143,7 +143,14 @@ if __name__ == '__main__':
         resposta_usuario = int(input('❐ Informe a sua opção (1 a 6): '))
 
         if resposta_usuario == 6:
+            # capturando tempo inicial da operacao
+            start_time = Time_execution.start_time()
+            Read_write_file.save_file(estrutura_de_dados)
             print('Programa finalizado!')
+            end_time = Time_execution.end_time()  # capturando tempo final da operacao
+            # calculando o tempo de execucao
+            Time_execution.calculate_time_execution(
+                start_time, end_time, 'Salvando Arquivo')
             break
         elif resposta_usuario == 1:  # Pesquisar carro
             placa = input('Digite a placa do carro: ')
@@ -404,5 +411,12 @@ if __name__ == '__main__':
             input('Digite (1), se desejar voltar ao menu e (2) caso deseje finalizar: '))
         clear_screen() # limpa Terminal
         if resposta_nova_solicitacao == 2:
+            # capturando tempo inicial da operacao
+            start_time = Time_execution.start_time()
+            Read_write_file.save_file(estrutura_de_dados)
             print('Programa finalizado!')
+            end_time = Time_execution.end_time()  # capturando tempo final da operacao
+            # calculando o tempo de execucao
+            Time_execution.calculate_time_execution(
+                start_time, end_time, 'Salvando Arquivo')
             break

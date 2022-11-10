@@ -21,7 +21,7 @@ class Car(Vehicle):
             self._tipo_veiculo = 'Carro'
 
     def __str__(self):
-        return f'{self._tipo_veiculo}: Placa({self._placa}) - Padrão Placa({self._padrao_placa}) - Renava({self.renavam}) - Marca({self._marca}) - Modelo({self._modelo}) - Ano Fabricação({self._ano_frabricacao}) - Cor({self._cor}) - Categoria({self._categoria}) - Estado({self._estado}) - Cidade({self._cidade})'
+        return f'{self._placa};{self.renavam};{self._marca};{self._modelo};{self._ano_frabricacao};{self._cor};{self._categoria};{self._estado};{self._cidade}'
 
     def validation_pattern_plate(self, placa):
         if placa != None:
