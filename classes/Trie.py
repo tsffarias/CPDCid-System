@@ -12,7 +12,7 @@ class TrieNode:
         self.is_end = False
 
         # inserting car
-        self.car = car 
+        self.car = car
 
         # a counter indicating how many times a word is inserted
         # (if this node's is_end is True)
@@ -97,7 +97,8 @@ class Trie(object):
     def dfs_relatorio_uf(self, node, prefix, uf):
         if node.is_end:
             if node.car.estado == uf.upper():
-                self.output.append((prefix + node.char, node.car, node.counter))
+                self.output.append(
+                    (prefix + node.char, node.car, node.counter))
 
         for child in node.children.values():
             self.dfs_relatorio_uf(child, prefix + node.char, uf)
@@ -142,7 +143,7 @@ class Trie(object):
             else:
                 # cannot found the prefix, return empty list
                 return []
-    
+
         # Traverse the trie to get all candidates
         self.dfs_relatorio_intervalo_tempo(
             node, x[:-1], ano_inicial, ano_final)
@@ -174,5 +175,5 @@ class Trie(object):
 #print(t.insert("LDG3297"))
 #print(t.query(""))
 
-test = [('HGM8629', 'testizinho', 1)]
-print(test[0][1])
+#test = [('HGM8629', 'testizinho', 1)]
+#print(test[0][1])

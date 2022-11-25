@@ -6,7 +6,7 @@
 # version ='1.0'
 # ---------------------------------------------------------------------------
 """
-Grupo: Thiago, Eduardo, Quirino, Gabriel
+Grupo: Thiago, Eduardo, Quirino, Biel
 Título: CPDCID: PYTHON - Estrutura de Dados 2022
 """
 
@@ -24,8 +24,11 @@ import os
 '''
 Limpa o terminal independente do sistema operacional
 '''
+
+
 def clear_screen():
-    os.system("cls" if os.name == 'nt' else "clear")    
+    os.system("cls" if os.name == 'nt' else "clear")
+
 
 def space():
     print("")
@@ -51,22 +54,25 @@ def menu():
     print("_______________________")
     space()
 
+
 def carro_coleta_dados(placa):
     carro = Car()
     carro.placa = placa
     carro.padrao_placa = carro.validation_pattern_plate(carro.placa)
-    
+
     renavam = input('Digite o renavam: ')
     if (carro.validation_renavam(renavam)):
         carro.renavam = renavam
     else:
-        raise Exception(f'Renavam inválido (padrão de 11 números não respeitados): {renavam}')
+        raise Exception(
+            f'Renavam inválido (padrão de 11 números não respeitados): {renavam}')
 
     marca = input('Digite a marca: ')
     if (carro.validation_marca(marca)):
         carro.marca = marca
     else:
-        raise Exception(f'Marca inválida (maximo de 15 caracteres não respeitados): {marca}')
+        raise Exception(
+            f'Marca inválida (maximo de 15 caracteres não respeitados): {marca}')
 
     modelo = input('Digite a modelo: ')
     if (carro.validation_modelo(modelo)):
@@ -94,8 +100,9 @@ def carro_coleta_dados(placa):
     else:
         raise Exception(f'Estado inválido: {estado}')
     carro.cidade = input('Digite a cidade: ')
-    
+
     return carro
+
 
 def load_data(estrutura_de_dados, tipo_estrutura):
     start_time = Time_execution.start_time()  # capturando tempo inicial
@@ -132,7 +139,7 @@ if __name__ == '__main__':
         estrutura_de_dados = Trie()
         tipo_estrutura = 'arvore_trie'
 
-    clear_screen() # limpa terminal
+    clear_screen()  # limpa terminal
     estrutura_de_dados = load_data(estrutura_de_dados, tipo_estrutura)
     #print(estrutura_de_dados.query(""))
 
@@ -159,7 +166,7 @@ if __name__ == '__main__':
             break
         elif resposta_usuario == 1:  # Pesquisar carro
             placa = input('Digite a placa do carro: ')
-            
+
             # capturando tempo inicial da operacao
             start_time = Time_execution.start_time()
             # tipo de operação de acordo com o tipo estrutura
@@ -197,14 +204,14 @@ if __name__ == '__main__':
                     print('Placa não existe.')
                 else:
                     estrutura_de_dados.carro_info(carro[0][1])
-            
+
             end_time = Time_execution.end_time()  # capturando tempo final da operacao
             # calculando o tempo de execucao
             Time_execution.calculate_time_execution(
                 start_time, end_time, 'Pesquisar carro')
         elif resposta_usuario == 2:  # remover carro
             placa = input('Digite a placa do carro a ser removido: ')
-            
+
             # tipo de operação de acordo com o tipo estrutura
             if tipo_estrutura == 'lista_duplamente_encadeada':
                 # capturando tempo inicial da operacao
@@ -224,7 +231,7 @@ if __name__ == '__main__':
                     print('Placa não existe.')
                 else:
                     print(f'Carro com placa {placa} removido com sucesso.')
-            
+
             elif tipo_estrutura == 'arvore_binaria_busca':
                 # capturando tempo inicial da operacao
                 start_time = Time_execution.start_time()
@@ -233,7 +240,7 @@ if __name__ == '__main__':
                     print('Placa não existe.')
                 else:
                     print(f'Carro com placa {placa} removido com sucesso.')
-            
+
             elif tipo_estrutura == 'arvore_avl':
                 # capturando tempo inicial da operacao
                 start_time = Time_execution.start_time()
@@ -243,12 +250,11 @@ if __name__ == '__main__':
                 else:
                     print(f'Carro com placa {placa} removido com sucesso.')
 
-            
             end_time = Time_execution.end_time()  # capturando tempo final da operacao
             # calculando o tempo de execucao
             Time_execution.calculate_time_execution(
-                    start_time, end_time, 'Remoção de carro')
-        
+                start_time, end_time, 'Remoção de carro')
+
         elif resposta_usuario == 3:  # adicionar carro
             placa = input('Digite a placa do carro: ')
             carro = estrutura_de_dados.__getitem__(placa)
@@ -262,13 +268,14 @@ if __name__ == '__main__':
                     # capturando tempo inicial da operacao
                     start_time = Time_execution.start_time()
                     estrutura_de_dados.inserir_no_inicio(carro)
-                    
-                    print(f'Veiculo com placa {carro.placa} adicionado com sucesso.')
+
+                    print(
+                        f'Veiculo com placa {carro.placa} adicionado com sucesso.')
                     end_time = Time_execution.end_time()  # capturando tempo final da operacao
-                        # calculando o tempo de execucao
+                    # calculando o tempo de execucao
                     Time_execution.calculate_time_execution(
-                            start_time, end_time, 'Inserção de novo carro')
-                
+                        start_time, end_time, 'Inserção de novo carro')
+
             elif tipo_estrutura == 'tabela_dispercao':
                 if carro != None:
                     print('Placa já existe. Tente novamente.')
@@ -276,20 +283,22 @@ if __name__ == '__main__':
                     carro = carro_coleta_dados(placa)
                     # capturando tempo inicial da operacao
                     start_time = Time_execution.start_time()
-                    resultado = estrutura_de_dados.__setitem__(carro.placa, carro)
+                    resultado = estrutura_de_dados.__setitem__(
+                        carro.placa, carro)
                     if resultado:
-                        print(f'Veiculo com placa {carro.placa} adicionado com sucesso.')
+                        print(
+                            f'Veiculo com placa {carro.placa} adicionado com sucesso.')
                         end_time = Time_execution.end_time()  # capturando tempo final da operacao
                         # calculando o tempo de execucao
                         Time_execution.calculate_time_execution(
                             start_time, end_time, 'Inserção de novo carro')
                     else:
                         print('Erro: Veiculo não encontrado.')
-        
+
         elif resposta_usuario == 4:  # editar carro
             placa = input('Digite a placa do carro: ')
             carro = estrutura_de_dados.__getitem__(placa)
-            
+
             # tipo de operação de acordo com o tipo estrutura
             if tipo_estrutura == 'lista_duplamente_encadeada':
                 if carro[0] is None:
@@ -308,18 +317,20 @@ if __name__ == '__main__':
                             start_time, end_time, 'Edição de carro')
                     else:
                         print('Erro: Veiculo não encontrado.')
-                
+
             elif tipo_estrutura == 'tabela_dispercao':
-                
+
                 if carro is None:
                     print('Placa não existe.')
-                else:                
+                else:
                     carro = carro_coleta_dados(placa)
                     # capturando tempo inicial da operacao
                     start_time = Time_execution.start_time()
-                    resultado = estrutura_de_dados.__edititem__(carro.placa, carro)
+                    resultado = estrutura_de_dados.__edititem__(
+                        carro.placa, carro)
                     if resultado:
-                        print(f'Veiculo com placa {carro.placa} editado com sucesso.')
+                        print(
+                            f'Veiculo com placa {carro.placa} editado com sucesso.')
                         end_time = Time_execution.end_time()  # capturando tempo final da operacao
                         # calculando o tempo de execucao
                         Time_execution.calculate_time_execution(
@@ -335,10 +346,10 @@ if __name__ == '__main__':
             resposta_usuario = int(input('❐ Informe a sua opção (1 ou 2): '))
 
             # Relatório de Intervalo de Anos
-            if (resposta_usuario == 1):  
+            if (resposta_usuario == 1):
                 ano_inicial = input('Digite o ano inicial: ')
                 ano_final = input('Digite o ano final: ')
-                
+
                 if tipo_estrutura == 'lista_duplamente_encadeada':
                     if (Car().validation_ano_fabricacao(ano_inicial) and Car().validation_ano_fabricacao(ano_final) and (ano_inicial <= ano_final)):
                         # capturando tempo inicial da operacao
@@ -399,10 +410,8 @@ if __name__ == '__main__':
                             start_time, end_time, 'Relatório de Intervalo de Anos')
                     else:
                         print('Intervalo de Anos inválido.')
-                
-            
-            
-            elif (resposta_usuario == 2): # Relatório Estadual por Final de Placa
+
+            elif (resposta_usuario == 2):  # Relatório Estadual por Final de Placa
                 uf = input('Digite o estado: ')
                 # capturando tempo inicial da operacao
                 start_time = Time_execution.start_time()
@@ -439,14 +448,14 @@ if __name__ == '__main__':
                         start_time, end_time, 'Relatório Estadual por Final de Placa')
             else:
                 print('Opção inválida.')
-            
+
         else:
             print('Tente novamente.')
 
         space()
         resposta_nova_solicitacao = int(
             input('Digite (1), se desejar voltar ao menu e (2) caso deseje finalizar: '))
-        clear_screen() # limpa Terminal
+        clear_screen()  # limpa Terminal
         if resposta_nova_solicitacao == 2:
             # capturando tempo inicial da operacao
             start_time = Time_execution.start_time()
@@ -457,4 +466,3 @@ if __name__ == '__main__':
             Time_execution.calculate_time_execution(
                 start_time, end_time, 'Salvando Arquivo')
             break
-
