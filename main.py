@@ -16,6 +16,7 @@ from classes.ListaDuplamenteEncadeada import ListaDuplamenteEncadeada
 from classes.TabelaDispercao import TabelaDispercao
 from classes.BinarySearchTree import BinarySearchTree
 from classes.AVLTree import AVLTree
+from classes.Trie import Trie
 from services.Read_write_file import Read_write_file
 from services.Time_execution import Time_execution
 import os
@@ -35,7 +36,7 @@ def menu_estrutura_de_dados():
     print("Opção 2 - Tabela de Disperção (Encadeamento Externo)")
     print("Opção 3 - Arvore Binaria de Busca")
     print("Opção 4 - Arvore AVL")
-    print("Opção 5 - Em Desenvolvimento")
+    print("Opção 5 - Arvore Digital (Trie)")
     print("_______________________")
     space()
 
@@ -114,7 +115,7 @@ if __name__ == '__main__':
     # escolhendo estrutura de dados
     menu_estrutura_de_dados()
     resposta_usuario = int(
-        input('❐ Informe a sua opção de Estrutura de Dados (1 a 4): '))
+        input('❐ Informe a sua opção de Estrutura de Dados (1 a 5): '))
     if resposta_usuario == 1:
         estrutura_de_dados = ListaDuplamenteEncadeada()
         tipo_estrutura = 'lista_duplamente_encadeada'
@@ -127,9 +128,13 @@ if __name__ == '__main__':
     elif resposta_usuario == 4:
         estrutura_de_dados = AVLTree()
         tipo_estrutura = 'arvore_avl'
+    elif resposta_usuario == 5:
+        estrutura_de_dados = Trie()
+        tipo_estrutura = 'arvore_trie'
 
     clear_screen() # limpa terminal
     estrutura_de_dados = load_data(estrutura_de_dados, tipo_estrutura)
+    #print(estrutura_de_dados.query(""))
 
     while (True):
 
@@ -185,6 +190,13 @@ if __name__ == '__main__':
                     print('Placa não existe.')
                 else:
                     estrutura_de_dados.carro_info(carro.car)
+
+            elif tipo_estrutura == 'arvore_trie':
+                carro = estrutura_de_dados.query(placa)
+                if len(carro) == 0 or len(placa) != 7:
+                    print('Placa não existe.')
+                else:
+                    estrutura_de_dados.carro_info(carro[0][1])
             
             end_time = Time_execution.end_time()  # capturando tempo final da operacao
             # calculando o tempo de execucao
@@ -375,6 +387,18 @@ if __name__ == '__main__':
                             start_time, end_time, 'Relatório de Intervalo de Anos')
                     else:
                         print('Intervalo de Anos inválido.')
+                elif tipo_estrutura == 'arvore_trie':
+                    if (Car().validation_ano_fabricacao(ano_inicial) and Car().validation_ano_fabricacao(ano_final) and (ano_inicial <= ano_final)):
+                        # capturando tempo inicial da operacao
+                        start_time = Time_execution.start_time()
+                        estrutura_de_dados.relatorio_intervalo_tempo(
+                            "", ano_inicial, ano_final)
+                        end_time = Time_execution.end_time()  # capturando tempo final da operacao
+                        # calculando o tempo de execucao
+                        Time_execution.calculate_time_execution(
+                            start_time, end_time, 'Relatório de Intervalo de Anos')
+                    else:
+                        print('Intervalo de Anos inválido.')
                 
             
             
@@ -403,6 +427,12 @@ if __name__ == '__main__':
                         start_time, end_time, 'Relatório Estadual por Final de Placa')
                 elif tipo_estrutura == 'arvore_avl':
                     estrutura_de_dados.relatorio_estadual_final_placa(uf)
+                    end_time = Time_execution.end_time()  # capturando tempo final da operacao
+                    # calculando o tempo de execucao
+                    Time_execution.calculate_time_execution(
+                        start_time, end_time, 'Relatório Estadual por Final de Placa')
+                elif tipo_estrutura == 'arvore_trie':
+                    estrutura_de_dados.relatorio_estadual_final_placa("", uf)
                     end_time = Time_execution.end_time()  # capturando tempo final da operacao
                     # calculando o tempo de execucao
                     Time_execution.calculate_time_execution(

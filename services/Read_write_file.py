@@ -46,5 +46,7 @@ class Read_write_file:
                     estrutura_de_dados.insert(carro.placa, carro)
                 elif tipo_estrutura == 'arvore_avl':
                     estrutura_de_dados.insert(carro.placa, carro)
+                elif tipo_estrutura == 'arvore_trie':
+                    estrutura_de_dados.insert(carro.placa, carro)
 
         return estrutura_de_dados
