@@ -100,9 +100,3 @@ Em todas as telas que permitem retorno, o usuário receberá a mesma mensagem pa
 
 
 
-
-## Indices
-
-- [Variáveis importantes](docs/vars.md)
-- [Funções](docs/functions.md)
-
