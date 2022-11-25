@@ -24,7 +24,7 @@ ESTRUTUDA DOS DIRETÓRIOS DO SISTEMA
 │   ├── veiculos.ernv → Arquivo de dados com 674 mil entradas
 │   └── veiculos_test.ernv → Arquivo de dados com menos de 100 entradas para testes rápidos
 ├── main.py → Arquivo principal do sistema
-├── README.md → Readme file do git
+├── README.md → Readme file do git, com descrições mais completas sobre o sistema
 ├── README.txt
 └── services
     ├── Read_write_file.py → responsável pela leitura e escrita de arquivos de dados

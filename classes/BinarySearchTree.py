@@ -2,6 +2,11 @@
 Arvore Binaria de Busca
 Referencia 1:  https://youtu.be/f5dU3xoE6ms
 Referencia 2:  https://youtu.be/Zaf8EOVa72I
+Referencia 3:  https://youtu.be/z0Ho8nMNlAM
+
+Tanto o método de inserção iterativa quanto recursiva funcionam
+contudo, para inserção ordenada muito grande, a recursiva estoura
+o limite de profundidade de recursão da linguagem
 '''
 
 from classes.Car import Car
@@ -15,33 +20,66 @@ class node:
         self.left_child = None
         self.right_child = None
         self.parent = None  # pointer to parent node in tree
+        self.last_visited_node = None # saves the last entrypoint to get deeper operations
 
 
 class BinarySearchTree:
     def __init__(self):
         self.root = None
 
+    #inserção iterativa
     def insert(self, value, car):
         if self.root == None:
             self.root = node(value, car)
-        else:
-            self._insert(value, car, self.root)
+            self.root.last_visited_node = self.root
+            return
+        
+        root = self.root
+        
+        while True:
+            if value < root.value:
+                if root.left_child != None:
+                    if root.last_visited_node.value < value:
+                        root = root.last_visited_node
+                    else: 
+                        root = root.left_child        
+                else:
+                    root.left_child=node(value, car)
+                    root.left_child.parent = root
+                    break
+            elif value >= root.value:
+                if root.right_child != None:
+                    if root.last_visited_node.value < value:
+                        root = root.last_visited_node
+                    else: 
+                        root = root.right_child
+                else:
+                    root.right_child=node(value, car)
+                    root.right_child.parent = root
+                    break
 
-    def _insert(self, value, car, cur_node):
-        if value < cur_node.value:
-            if cur_node.left_child == None:
-                cur_node.left_child = node(value, car)
-                cur_node.left_child.parent = cur_node  # set parent
-            else:
-                self._insert(value, car, cur_node.left_child)
-        elif value > cur_node.value:
-            if cur_node.right_child == None:
-                cur_node.right_child = node(value, car)
-                cur_node.right_child.parent = cur_node  # set parent
-            else:
-                self._insert(value, car, cur_node.right_child)
-        else:
-            print("Value already in tree!")
+    # inserção recursiva @thiago
+    # def insert(self, value, car):
+    #     if self.root == None:
+    #         self.root = node(value, car)
+    #     else:
+    #         self._insert(value, car, self.root)
+
+    # def _insert(self, value, car, cur_node):
+    #     if value < cur_node.value:
+    #         if cur_node.left_child == None:
+    #             cur_node.left_child = node(value, car)
+    #             cur_node.left_child.parent = cur_node  # set parent
+    #         else:
+    #             self._insert(value, car, cur_node.left_child)
+    #     elif value > cur_node.value:
+    #         if cur_node.right_child == None:
+    #             cur_node.right_child = node(value, car)
+    #             cur_node.right_child.parent = cur_node  # set parent
+    #         else:
+    #             self._insert(value, car, cur_node.right_child)
+    #     else:
+    #         print("Value already in tree!")
 
     def print_tree(self):
         if self.root != None:
