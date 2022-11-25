@@ -10,7 +10,7 @@
 from classes.Car import Car
 from pathlib import Path
 
-file_name = 'veiculos_test'
+file_name = 'veiculos'
 
 class Read_write_file:
 

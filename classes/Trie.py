@@ -1,6 +1,7 @@
 
 #from classes.Car import Car
 
+dados_bst = []
 class TrieNode:
     """A node in the trie structure"""
 
@@ -56,6 +57,34 @@ class Trie(object):
         # Increment the counter to indicate that we see this word once more
         node.counter += 1
 
+    def preparando_salvamento_dados(self):
+        dado = self.query_salvando_arquivo("")
+        return dado
+
+    def dfs_salvando_arquivo(self, node, prefix):
+        if node.is_end:
+            dados_bst.append(str(node.car))
+
+        for child in node.children.values():
+            self.dfs_salvando_arquivo(child, prefix + node.char)
+
+    def query_salvando_arquivo(self, x):
+        self.output = []
+        node = self.root
+
+        # Check if the prefix is in the trie
+        for char in x:
+            if char in node.children:
+                node = node.children[char]
+            else:
+                # cannot found the prefix, return empty list
+                return []
+
+        # Traverse the trie to get all candidates
+        self.dfs_salvando_arquivo(node, x[:-1])
+
+        return dados_bst
+    
     def dfs(self, node, prefix):
         """Depth-first traversal of the trie
         
