@@ -6,7 +6,7 @@
 # version ='1.0'
 # ---------------------------------------------------------------------------
 """
-Grupo: Thiago, Eduardo, Quirino, Biel
+Grupo: Thiago, Eduardo, Quirino, Gabriel
 Título: CPDCID: PYTHON - Estrutura de Dados 2022
 """
 
