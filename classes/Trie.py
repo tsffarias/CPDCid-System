@@ -123,8 +123,7 @@ class Trie(object):
 
     def dfs_relatorio_intervalo_tempo(self, node, prefix, ano_inicial, ano_final):
         if node.is_end:
-            print('test1')
-            if node.car.ano_frabricacao >= int(ano_inicial) and node.car.ano_frabricacao <= int(ano_final):
+            if int(node.car.ano_frabricacao) >= int(ano_inicial) and int(node.car.ano_frabricacao) <= int(ano_final):
                 self.output.append(
                     (prefix + node.char, node.car, node.counter))
 
@@ -147,6 +146,8 @@ class Trie(object):
         # Traverse the trie to get all candidates
         self.dfs_relatorio_intervalo_tempo(
             node, x[:-1], ano_inicial, ano_final)
+
+        self.output = sorted(self.output, key=lambda x: x[1].ano_frabricacao)
 
         for car in self.output:
             self.carro_info(car[1])
