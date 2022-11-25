@@ -37,25 +37,31 @@ class BinarySearchTree:
         root = self.root
         
         while True:
+            
+            
             if value < root.value:
-                if root.left_child != None:
-                    if root.last_visited_node.value < value:
-                        root = root.last_visited_node
-                    else: 
+                if root.left_child != None: 
+                    print(f'{value} - nó atual: {self.root.last_visited_node.value}')
+                    if (value < self.root.last_visited_node.value):
+                        root = self.root.last_visited_node
+                    else:
                         root = root.left_child        
                 else:
                     root.left_child=node(value, car)
                     root.left_child.parent = root
+                    self.root.last_visited_node = root.left_child
                     break
             elif value >= root.value:
+                print(f'{value} - nó atual: {self.root.last_visited_node.value}')
                 if root.right_child != None:
-                    if root.last_visited_node.value < value:
-                        root = root.last_visited_node
-                    else: 
+                    if (value >= self.root.last_visited_node.value):
+                        root = self.root.last_visited_node
+                    else:
                         root = root.right_child
                 else:
                     root.right_child=node(value, car)
                     root.right_child.parent = root
+                    self.root.last_visited_node = root.right_child
                     break
 
     # inserção recursiva @thiago
