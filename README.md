@@ -26,21 +26,38 @@ Desenvolvido pelos discentes:
 
 
 # Documentação
+
+## Estrutura dos arquivos
+    .
+    ├── classes → Objetos (estruturas de dados e veículos)
+    │   ├── AVLTree.py
+    │   ├── BinarySearchTree.py
+    │   ├── Car.py
+    │   ├── ListaDuplamenteEncadeada.py
+    │   ├── TabelaDispercao.py
+    │   ├── Trie.py
+    │   └── Vehicle.py
+    ├── docs → Documentos para modelagem e desenvolvimento do sistema
+    │   ├── enunciado_trabalho_pratico.pdf
+    │   ├── functions.md 
+    │   └── vars.md
+    ├── files
+    │   ├── veiculos.ernv → Arquivo de dados com 700 mil entradas
+    │   └── veiculos_test.ernv → Arquivo de dados para testes rápidos
+    ├── main.py → Arquivo principal do sistema
+    ├── README.md → Readme file do git
+    ├── README.txt
+    └── services
+        ├── Read_write_file.py → leitura e escrita de arquivos de dados
+        └── Time_execution.py → calcula os tempos de execução das ações
+
 ## Instruções de uso
 
 ### Execução do sistema
-Se estiver no Linux:
 
-    ./run.py
+Em seu terminal, execute:
 
-Se for usuário do Windows:
-
-    python3 run.py
-
-Se você for um Mac User:
-
-    #Pague um cafezinho, 'cê' tem grana;
-    python3 run.py
+    python3 main.py
 
 
 ### Menu inicial:
@@ -80,13 +97,6 @@ Ao carregar a estrutura de dados definida, o sistema exibirá as funções princ
 
 * O valor referente ao tempo de carregamento dos dados, só será exibido caso seja a primeira vez que o usuário visualiza a tela. 
 
-### Finalização
-
-Ao selecionar a opção referente a 'Sair do programa', será exibido o tempo de salvamento do arquivo de dados.
-
-    Programa finalizado!
-    Tempo de execução da operação Salvando Arquivo: 0.0 segundos
-
 ### Navegação
 
 Para todas as operações seguintes, o usuário irá navegar atraves de um menu de seleção com o mesmo comportamento e padrão de uso.
@@ -97,6 +107,14 @@ Em todas as telas que permitem retorno, o usuário receberá a mesma mensagem pa
     Tempo de execução da operação Pesquisar carro: 0.0 segundos
 
     Digite (1), se desejar voltar ao menu e (2) caso deseje finalizar: 
+
+
+### Finalização
+
+Ao selecionar a opção referente a 'Sair do programa', será exibido o tempo de salvamento do arquivo de dados.
+
+    Programa finalizado!
+    Tempo de execução da operação Salvando Arquivo: 0.0 segundos
 
 
 
