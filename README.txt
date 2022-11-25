@@ -21,7 +21,7 @@ ESTRUTUDA DOS DIRETÓRIOS DO SISTEMA
 │   ├── functions.md 
 │   └── vars.md
 ├── files
-│   ├── veiculos.ernv → Arquivo de dados com 700 mil entradas
+│   ├── veiculos.ernv → Arquivo de dados com 674 mil entradas
 │   └── veiculos_test.ernv → Arquivo de dados com menos de 100 entradas para testes rápidos
 ├── main.py → Arquivo principal do sistema
 ├── README.md → Readme file do git
