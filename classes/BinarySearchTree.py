@@ -41,7 +41,6 @@ class BinarySearchTree:
             
             if value < root.value:
                 if root.left_child != None: 
-                    print(f'{value} - nó atual: {self.root.last_visited_node.value}')
                     if (value < self.root.last_visited_node.value):
                         root = self.root.last_visited_node
                     else:
@@ -52,7 +51,6 @@ class BinarySearchTree:
                     self.root.last_visited_node = root.left_child
                     break
             elif value >= root.value:
-                print(f'{value} - nó atual: {self.root.last_visited_node.value}')
                 if root.right_child != None:
                     if (value >= self.root.last_visited_node.value):
                         root = self.root.last_visited_node
