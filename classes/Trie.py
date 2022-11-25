@@ -1,6 +1,13 @@
 
 #from classes.Car import Car
 
+'''
+Arvore Digital
+Referencia 1: https://towardsdatascience.com/implementing-a-trie-data-structure-in-python-in-less-than-100-lines-of-code-a877ea23c1a1
+Referencia 2: https://albertauyeung.github.io/2020/06/15/python-trie.html/
+'''
+
+
 dados_bst = []
 class TrieNode:
     """A node in the trie structure"""
